@@ -1,16 +1,16 @@
-import EventOverview from "../components/EventOverview";
+// import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
 import { Stack, Alert } from "@mui/material";
 import { Container } from "@mui/system";
 import { useQuery } from "react-query";
+import { backendUrl } from "../lib/functions";
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
-
-const Home = (props) => {
+const Home = () => {
+  console.log(backendUrl);
   //fetch events from strapi
   const {
-    isLoading: eventLoading,
-    error: eventError,
+    isLoading: eventsAreLoading,
+    error: eventsLoadingError,
     data: events,
   } = useQuery(["events"], async () => {
     const data = await fetch(`${backendUrl}/api/events`).then((res) =>
@@ -40,14 +40,14 @@ const Home = (props) => {
           marginY: 5,
         }}
       >
-        {/* use a filter or work with geolocation API */}
+        {/* can use a filter or work with geolocation API */}
         <p>Evenementen zoeken in</p>
         <h1>Oost-Vlaanderen</h1>
+
         {/* Popular in Oost-Vl niet doen */}
-        {/* <Stack spacing={4}>{overviewEventsAvailable}</Stack> */}
-        <Stack>
-          {eventLoading && <LoadingInfo />}
-          {eventError && (
+        <Stack spacing={4}>
+          {eventsAreLoading && <LoadingInfo />}
+          {eventsLoadingError && (
             <Alert severity="error">Could not load the page</Alert>
           )}
           {events &&
@@ -60,7 +60,9 @@ const Home = (props) => {
               //   date={event.date}
               //   location={event.location}
               // />
-              <h2>{event.id}</h2>
+              <div key={event.id} className="box">
+                <p className="nameEvent">{event.attributes.name}</p>
+              </div>
             ))}
         </Stack>
       </Container>
