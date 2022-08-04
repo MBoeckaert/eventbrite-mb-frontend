@@ -1,4 +1,4 @@
-// import EventOverview from "../components/EventOverview";
+import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
 import { Stack, Alert } from "@mui/material";
 import { Container } from "@mui/system";
@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 import { backendUrl } from "../lib/functions";
 
 const Home = () => {
-  console.log(backendUrl);
+  // console.log(backendUrl);
   //fetch events from strapi
   const {
     isLoading: eventsAreLoading,
@@ -18,20 +18,6 @@ const Home = () => {
     );
     return data;
   });
-  /* Check if there are events available close to you with a ternary operator */
-  // let overviewEventsAvailable = <p>There are no events close to you</p>;
-
-  // if (props.events.length > 0) {
-  //   overviewEventsAvailable = props.events.map((event) => (
-  // <EventOverview
-  //   key={event.id}
-  //   img={event.img}
-  //   name={event.name}
-  //   date={event.date}
-  //   location={event.location}
-  // />
-  //   ));
-  // }
 
   return (
     <>
@@ -53,16 +39,16 @@ const Home = () => {
           {events &&
             events.data.length !== 0 &&
             events.data.map((event) => (
-              // <EventOverview
-              //   key={event.id}
-              //   img={event.img}
-              //   name={event.name}
-              //   date={event.date}
-              //   location={event.location}
-              // />
-              <div key={event.id} className="box">
-                <p className="nameEvent">{event.attributes.name}</p>
-              </div>
+              <EventOverview
+                key={event.id}
+                img={event.attributes.img}
+                name={event.attributes.name}
+                date={event.attributes.date}
+                location={event.attributes.location}
+              />
+              // <div key={event.id} className="box">
+              //   <p className="nameEvent">{event.attributes.name}</p>
+              // </div>
             ))}
         </Stack>
       </Container>

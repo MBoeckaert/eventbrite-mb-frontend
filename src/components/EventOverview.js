@@ -24,9 +24,9 @@ const theme = createTheme({
 });
 
 const EventOverview = (props) => {
-  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-  const daywritten = props.date.toLocaleString("en-US", { weekday: "short" });
-  const month = props.date.toLocaleString("en-US", { month: "long" });
+  // const day = props.date.toLocaleString("en-US", { day: "2-digit" });
+  // const daywritten = props.date.toLocaleString("en-US", { weekday: "short" });
+  // const month = props.date.toLocaleString("en-US", { month: "long" });
 
   const navigate = useNavigate();
 
@@ -51,8 +51,12 @@ const EventOverview = (props) => {
                   justifyContent: "space-around",
                 }}
               >
-                <Typography variant="h6" component="h2" sx={{ color: "red" }}>
-                  {daywritten + ", " + month + " " + day}
+                <Typography
+                  variant="h6"
+                  component="h2"
+                  sx={{ color: "red", marginTop: "1rem" }}
+                >
+                  {props.date}
                 </Typography>
                 <Typography variant="subtitle2" component="h3">
                   {props.name}
