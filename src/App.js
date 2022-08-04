@@ -5,6 +5,7 @@ import Tickets from "./pages/TicketsPage";
 import Profile from "./pages/ProfilePage";
 import Layout from "./components/Layout.js";
 import OrderTickets from "./pages/OrderTickets.js";
+import SignUp from "./pages/SignUp.js";
 import { Container } from "@mui/system";
 
 import { Routes, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/eventInfo" element={<ClickedEventInformation />} />
             <Route path="/orderTickets" element={<OrderTickets />} />
+            <Route path="/signUp" element={<SignUp />} />
           </Route>
         </Routes>
       </Container>

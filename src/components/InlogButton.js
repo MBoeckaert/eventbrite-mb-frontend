@@ -25,7 +25,7 @@ const ButtonTickets = (props) => {
         <TicketsButton
           variant="contained"
           // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
-          onClick={() => navigate("/orderTickets")}
+          onClick={() => navigate("/signUp")}
         >
           inloggen
         </TicketsButton>
