@@ -24,10 +24,6 @@ const theme = createTheme({
 });
 
 const EventOverview = (props) => {
-  // const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-  // const daywritten = props.date.toLocaleString("en-US", { weekday: "short" });
-  // const month = props.date.toLocaleString("en-US", { month: "long" });
-
   const navigate = useNavigate();
 
   return (
@@ -39,7 +35,7 @@ const EventOverview = (props) => {
       >
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <EventImage img={props.img} />
+            <EventImage picture={props.picture} />
           </Grid>
           <Grid item xs={8}>
             <ThemeProvider theme={theme}>

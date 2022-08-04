@@ -1,6 +1,6 @@
 import EventImage from "../components/EventImage";
 import { Container, Grid, Typography, Box, Paper } from "@mui/material";
-import Button from "../components/Button.js";
+import InlogButton from "../components/InlogButton.js";
 
 const ClickedEventInformation = (props) => {
   console.log(props.events);
@@ -80,7 +80,7 @@ const ClickedEventInformation = (props) => {
           <p>Google Maps</p>
         </Box>
 
-        <Button />
+        <InlogButton />
       </Container>
     </>
   );

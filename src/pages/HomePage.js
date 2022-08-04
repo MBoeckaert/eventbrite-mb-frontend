@@ -41,14 +41,11 @@ const Home = () => {
             events.data.map((event) => (
               <EventOverview
                 key={event.id}
-                img={event.attributes.img}
+                picture={event.attributes.picture}
                 name={event.attributes.name}
                 date={event.attributes.date}
                 location={event.attributes.location}
               />
-              // <div key={event.id} className="box">
-              //   <p className="nameEvent">{event.attributes.name}</p>
-              // </div>
             ))}
         </Stack>
       </Container>

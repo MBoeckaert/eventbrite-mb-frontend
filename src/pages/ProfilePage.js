@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material/";
 
-import Button from "../components/Button";
+import InlogButton from "../components/InlogButton";
 
 const Profile = () => {
   return (
@@ -8,7 +8,7 @@ const Profile = () => {
       <Grid container>
         <Grid item xs={12} sx={{ height: "85vh" }}></Grid>
         <Grid item xs={12}>
-          <Button>Inloggen</Button>
+          <InlogButton />
         </Grid>
       </Grid>
     </>

@@ -1,10 +1,10 @@
-import Button from "../components/Button.js";
+import InlogButton from "../components/InlogButton.js";
 
 const OrderTickets = () => {
   return (
     <>
       <h1>Order Page</h1>
-      <Button></Button>
+      <InlogButton />
     </>
   );
 };

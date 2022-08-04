@@ -17,21 +17,6 @@ const Search = (props) => {
     return data;
   });
 
-  /* Check if there are events available close to you with a ternary operator */
-  // let overviewEventsAvailable = <p>There are no events close to you</p>;
-
-  // if (props.events.length > 0) {
-  //   overviewEventsAvailable = props.events.map((event) => (
-  //     <EventOverview
-  //       key={event.id}
-  //       img={event.img}
-  //       name={event.name}
-  //       date={event.date}
-  //       location={event.location}
-  //     />
-  //   ));
-  // }
-
   return (
     <>
       <Container
@@ -58,7 +43,7 @@ const Search = (props) => {
           gutterBottom
           sx={{ fontWeight: "initial" }}
         >
-          {props.events.length} evenementen
+          {events.data.length} evenementen
         </Typography>
         {/* <Stack spacing={4}>{overviewEventsAvailable}</Stack> */}
         <Stack spacing={4}>

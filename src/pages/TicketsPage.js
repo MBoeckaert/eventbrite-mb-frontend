@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material/";
 
-import Button from "../components/Button";
+import InlogButton from "../components/InlogButton";
 
 const Tickets = () => {
   return (
@@ -20,10 +20,11 @@ const Tickets = () => {
         <Grid item xs={12} sx={{ height: "63vh" }}></Grid>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Button>Inloggen</Button>
+            <InlogButton />
           </Grid>
           <Grid item xs={12}>
-            <Button>Evenementen</Button>
+            {/* <Button>Evenementen</Button> */}
+            <p>Evenementen</p>
           </Grid>
         </Grid>
       </Grid>
