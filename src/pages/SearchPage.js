@@ -59,6 +59,11 @@ const Search = () => {
           {events &&
             events.data.length !== 0 &&
             events.data
+              .sort((a, b) => {
+                return (
+                  new Date(a.attributes.date) - new Date(b.attributes.date)
+                );
+              })
               .filter((event) => {
                 if (searchBar === "") {
                   return event;

@@ -38,15 +38,21 @@ const Home = () => {
           )}
           {events &&
             events.data.length !== 0 &&
-            events.data.map((event) => (
-              <EventOverview
-                key={event.id}
-                picture={event.attributes.picture}
-                name={event.attributes.name}
-                date={event.attributes.date}
-                location={event.attributes.location}
-              />
-            ))}
+            events.data
+              .sort((a, b) => {
+                return (
+                  new Date(a.attributes.date) - new Date(b.attributes.date)
+                );
+              })
+              .map((event) => (
+                <EventOverview
+                  key={event.id}
+                  picture={event.attributes.picture}
+                  name={event.attributes.name}
+                  date={event.attributes.date}
+                  location={event.attributes.location}
+                />
+              ))}
         </Stack>
       </Container>
     </>
