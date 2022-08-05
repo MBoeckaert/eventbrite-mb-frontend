@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material/";
 
 import InlogButton from "../components/InlogButton";
+import EventButton from "../components/EventButton";
 
 const Tickets = () => {
   return (
@@ -24,7 +25,7 @@ const Tickets = () => {
           </Grid>
           <Grid item xs={12}>
             {/* <Button>Evenementen</Button> */}
-            <p>Evenementen</p>
+            <EventButton />
           </Grid>
         </Grid>
       </Grid>
