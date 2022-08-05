@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const TicketsButton = styled(Button)({
+const EventsButton = styled(Button)({
   width: "100%",
   boxShadow: "none",
   fontSize: 16,
@@ -15,17 +15,17 @@ const TicketsButton = styled(Button)({
   },
 });
 
-const ButtonTickets = (props) => {
+const ButtonEvents = () => {
   const navigate = useNavigate();
   return (
     <>
       <ThemeProvider>
-        <TicketsButton variant="outlined" onClick={() => navigate("/search")}>
+        <EventsButton variant="outlined" onClick={() => navigate("/search")}>
           Evenementen
-        </TicketsButton>
+        </EventsButton>
       </ThemeProvider>
     </>
   );
 };
 
-export default ButtonTickets;
+export default ButtonEvents;

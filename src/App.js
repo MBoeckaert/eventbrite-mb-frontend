@@ -6,6 +6,7 @@ import Profile from "./pages/ProfilePage";
 import Layout from "./components/Layout.js";
 import OrderTickets from "./pages/OrderTickets.js";
 import SignUp from "./pages/SignUp.js";
+import PayTickets from "./pages/PayTickets.js";
 import { Container } from "@mui/system";
 
 import { Routes, Route } from "react-router-dom";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/eventInfo" element={<ClickedEventInformation />} />
             <Route path="/orderTickets" element={<OrderTickets />} />
             <Route path="/signUp" element={<SignUp />} />
+            <Route path="/payTickets" element={<PayTickets />} />
           </Route>
         </Routes>
       </Container>
