@@ -36,8 +36,8 @@ const NavBar = () => {
             icon={<ConfirmationNumberOutlinedIcon />}
           />
           <BottomNavigationAction
-            value="profile"
-            to="/profile"
+            value="signUp"
+            to="/signUp"
             icon={<PersonOutlineOutlinedIcon />}
           />
         </BottomNavigation>
