@@ -3,7 +3,7 @@ import { Container, Grid, Typography, Box, Paper } from "@mui/material";
 import TicketsButton from "../components/TicketsButton.js";
 
 const ClickedEventInformation = (props) => {
-  console.log(props.events);
+  // console.log(props.events);
   return (
     <>
       <EventImage />

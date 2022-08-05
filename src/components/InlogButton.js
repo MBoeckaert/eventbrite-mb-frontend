@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { ThemeProvider } from "@mui/material";
+// import { ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const LoginButton = styled(Button)({
@@ -21,15 +21,15 @@ const ButtonLogIn = (props) => {
   const navigate = useNavigate();
   return (
     <>
-      <ThemeProvider>
-        <LoginButton
-          variant="contained"
-          // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
-          onClick={() => navigate("/signUp")}
-        >
-          Inloggen
-        </LoginButton>
-      </ThemeProvider>
+      {/* <ThemeProvider> */}
+      <LoginButton
+        variant="contained"
+        // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
+        onClick={() => navigate("/signUp")}
+      >
+        Inloggen
+      </LoginButton>
+      {/* </ThemeProvider> */}
     </>
   );
 };

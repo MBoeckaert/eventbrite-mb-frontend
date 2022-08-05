@@ -2,10 +2,12 @@ import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
 import { Stack, Typography, Input, Alert } from "@mui/material";
 import { Container } from "@mui/system";
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { backendUrl } from "../lib/functions";
 
-const Search = (props) => {
+const Search = () => {
+  const [searchBar, setSearchBar] = useState("");
   const {
     isLoading: eventsAreLoading,
     error: eventsLoadingError,
@@ -36,10 +38,13 @@ const Search = (props) => {
             ":before": { borderBottomColor: "blue" },
             ":after": { borderBottomColor: "blue" },
           }}
+          onChange={(e) => {
+            setSearchBar(e.target.value);
+          }}
         />
         <Typography
           variant="h1"
-          component="div"
+          component="h1"
           gutterBottom
           sx={{ fontWeight: "initial" }}
         >
@@ -53,18 +58,30 @@ const Search = (props) => {
           )}
           {events &&
             events.data.length !== 0 &&
-            events.data.map((event) => (
-              <EventOverview
-                key={event.id}
-                img={event.attributes.img}
-                name={event.attributes.name}
-                date={event.attributes.date}
-                location={event.attributes.location}
-              />
-              // <div key={event.id} className="box">
-              //   <p className="nameEvent">{event.attributes.name}</p>
-              // </div>
-            ))}
+            events.data
+              .filter((event) => {
+                if (searchBar === "") {
+                  return event;
+                } else if (
+                  event.attributes.name
+                    .toLowerCase()
+                    .includes(searchBar.toLowerCase())
+                ) {
+                  return event;
+                }
+              })
+              .map((event) => (
+                <EventOverview
+                  key={event.id}
+                  img={event.attributes.img}
+                  name={event.attributes.name}
+                  date={event.attributes.date}
+                  location={event.attributes.location}
+                />
+                // <div key={event.id} className="box">
+                //   <p className="nameEvent">{event.attributes.name}</p>
+                // </div>
+              ))}
         </Stack>
       </Container>
     </>

@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { ThemeProvider } from "@mui/material";
+// import { ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const EventsButton = styled(Button)({
@@ -19,11 +19,11 @@ const ButtonEvents = () => {
   const navigate = useNavigate();
   return (
     <>
-      <ThemeProvider>
-        <EventsButton variant="outlined" onClick={() => navigate("/search")}>
-          Evenementen
-        </EventsButton>
-      </ThemeProvider>
+      {/* <ThemeProvider> */}
+      <EventsButton variant="outlined" onClick={() => navigate("/search")}>
+        Evenementen
+      </EventsButton>
+      {/* </ThemeProvider> */}
     </>
   );
 };
