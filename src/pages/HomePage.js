@@ -4,9 +4,11 @@ import { Stack, Alert } from "@mui/material";
 import { Container } from "@mui/system";
 import { useQuery } from "react-query";
 import { backendUrl } from "../lib/functions";
+import { useStore } from "../store";
 
 const Home = () => {
-  // console.log(backendUrl);
+  const isLoggedIn = useStore((state) => state.isLoggedIn);
+  const username = useStore((state) => state.username);
   //fetch events from strapi
   const {
     isLoading: eventsAreLoading,
@@ -26,6 +28,7 @@ const Home = () => {
           marginY: 5,
         }}
       >
+        {isLoggedIn ? <h2>Welcome {username}</h2> : ""}
         {/* can use a filter or work with geolocation API */}
         <p>Evenementen zoeken in</p>
         <h1>Oost-Vlaanderen</h1>

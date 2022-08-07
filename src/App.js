@@ -6,6 +6,7 @@ import Layout from "./components/Layout.js";
 import OrderTickets from "./pages/OrderTickets.js";
 import SignUp from "./pages/SignUp.js";
 import PayTickets from "./pages/PayTickets.js";
+import LoginRedirect from "./pages/LoginRedirect";
 import { Container } from "@mui/system";
 
 import { Routes, Route } from "react-router-dom";
@@ -17,6 +18,11 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route
+              exact
+              path="/connect/:providerName/redirect"
+              element={<LoginRedirect />}
+            />
             <Route path="/" element={<Home />} />
             <Route path="/home/" element={<Home />} />
             <Route path="/search" element={<Search />} />

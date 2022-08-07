@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material/";
-
+// import { useQuery } from "react-query";
 import InlogButton from "../components/InlogButton";
+// import EventOverview from "../components/EventOverview";
 
 const Likes = () => {
   return (
