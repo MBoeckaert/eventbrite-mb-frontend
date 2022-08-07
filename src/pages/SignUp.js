@@ -10,12 +10,32 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
+import { useStore } from "../store";
+import { backendUrl } from "../lib/functions";
 
 import GoogleIcon from "@mui/icons-material/Google";
+
+const LoginButton = styled(Button)({
+  width: "100%",
+  boxShadow: "none",
+  fontSize: 16,
+  padding: "6px 12px",
+  lineHeight: 1.5,
+  backgroundColor: "#f05537",
+  "&:hover": {
+    backgroundColor: "#d13719",
+    borderColor: "#0062cc",
+    boxShadow: "none",
+  },
+});
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const isLoggedIn = useStore((state) => state.isLoggedIn);
+  const logout = useStore((state) => state.logout);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -105,24 +125,48 @@ export default function SignIn() {
               >
                 <p>OR</p>
               </Grid>
-              <Button
-                type="submit"
-                fullWidth
-                variant="outlined"
-                sx={{ mt: 3, mb: 2, borderColor: "#f05537", color: "#f05537" }}
-                startIcon={
-                  <GoogleIcon
+
+              {isLoggedIn ? (
+                <>
+                  <Button
+                    variant="outlined"
+                    fullWidth
+                    color="inherit"
+                    onClick={logout}
                     sx={{
-                      height: "2rem",
-                      width: "auto",
-                      color: "#D8503F",
-                      paddingBottom: ".2rem",
+                      borderColor: "#000000",
+                      borderWidth: ".1rem",
                     }}
-                  />
-                }
-              >
-                Login with Google
-              </Button>
+                  >
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <LoginButton
+                  color="inherit"
+                  component="a"
+                  href={`${backendUrl}/api/connect/google`}
+                  sx={{
+                    mt: 3,
+                    mb: 2,
+                    borderColor: "#f05537",
+                    color: "#ffffff",
+                  }}
+                  startIcon={
+                    <GoogleIcon
+                      sx={{
+                        height: "2rem",
+                        width: "auto",
+                        color: "darkred",
+                        paddingBottom: ".2rem",
+                        paddingRight: ".5rem",
+                      }}
+                    />
+                  }
+                >
+                  Login with Google
+                </LoginButton>
+              )}
             </Grid>
           </Box>
         </Box>

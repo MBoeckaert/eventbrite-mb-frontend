@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 // import { ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useStore } from "../store";
 
 const EventsButton = styled(Button)({
   width: "100%",
@@ -16,14 +17,18 @@ const EventsButton = styled(Button)({
 });
 
 const ButtonEvents = () => {
+  const isLoggedIn = useStore((state) => state.isLoggedIn);
   const navigate = useNavigate();
+
   return (
     <>
-      {/* <ThemeProvider> */}
-      <EventsButton variant="outlined" onClick={() => navigate("/search")}>
-        Evenementen
-      </EventsButton>
-      {/* </ThemeProvider> */}
+      {isLoggedIn ? (
+        ""
+      ) : (
+        <EventsButton variant="outlined" onClick={() => navigate("/search")}>
+          Evenementen
+        </EventsButton>
+      )}
     </>
   );
 };

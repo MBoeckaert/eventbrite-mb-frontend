@@ -1,8 +1,6 @@
-import { Button, Box } from "@mui/material";
+import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-// import { ThemeProvider } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
-// import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import { useStore } from "../store";
 import { backendUrl } from "../lib/functions";
 
@@ -22,26 +20,22 @@ const LoginButton = styled(Button)({
 
 const ButtonLogIn = (props) => {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
-  const logout = useStore((state) => state.logout);
+  const navigate = useNavigate();
 
   return (
-    <Box>
+    <>
       {isLoggedIn ? (
-        <>
-          <LoginButton color="inherit" onClick={logout}>
-            Logout
-          </LoginButton>
-        </>
+        ""
       ) : (
         <LoginButton
-          color="inherit"
-          component="a"
-          href={`${backendUrl}/api/connect/google`}
+          variant="contained"
+          // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
+          onClick={() => navigate("/signUp")}
         >
-          Login
+          Inloggen
         </LoginButton>
       )}
-    </Box>
+    </>
   );
 };
 
