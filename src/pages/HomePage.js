@@ -28,10 +28,9 @@ const Home = () => {
           marginY: 5,
         }}
       >
-        {isLoggedIn ? <h2>Welcome {username}</h2> : ""}
+        {isLoggedIn ? <h1>Welcome {username}</h1> : ""}
         {/* can use a filter or work with geolocation API */}
-        <p>Evenementen zoeken in</p>
-        <h1>Oost-Vlaanderen</h1>
+        <h3>Opkomende evenementen</h3>
 
         {/* Popular in Oost-Vl niet doen */}
         <Stack spacing={4}>
@@ -42,6 +41,12 @@ const Home = () => {
           {events &&
             events.data.length !== 0 &&
             events.data
+              .filter((date) => {
+                return (
+                  date.attributes.date &&
+                  new Date(date.attributes.date).getTime() > new Date()
+                );
+              })
               .sort((a, b) => {
                 return (
                   new Date(a.attributes.date) - new Date(b.attributes.date)

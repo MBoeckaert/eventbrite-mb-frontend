@@ -56,7 +56,7 @@ const theme = createTheme({
     },
     h3: {
       fontSize: 16,
-      fontWeight: "bold",
+      textTransform: "uppercase",
     },
     h4: {
       fontSize: 12,

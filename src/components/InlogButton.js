@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../store";
-import { backendUrl } from "../lib/functions";
 
 const LoginButton = styled(Button)({
   width: "100%",
