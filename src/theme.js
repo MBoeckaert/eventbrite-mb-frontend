@@ -49,6 +49,7 @@ const theme = createTheme({
     h1: {
       fontSize: 28,
       fontWeight: "bold",
+      textTransform: "capitalize",
     },
     h2: {
       fontSize: 18,

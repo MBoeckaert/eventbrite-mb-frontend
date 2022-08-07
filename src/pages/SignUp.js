@@ -34,6 +34,7 @@ const theme = createTheme();
 
 export default function SignIn() {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
+  const username = useStore((state) => state.username);
   const logout = useStore((state) => state.logout);
 
   const handleSubmit = (event) => {
@@ -49,127 +50,155 @@ export default function SignIn() {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Typography component="h1" variant="h5">
-            Sign Up
-          </Typography>
+        {isLoggedIn ? (
+          ""
+        ) : (
           <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="confirm-password"
-              label="Confirm Password"
-              type="password"
-              id="confirm-password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2, backgroundColor: "#f05537" }}
-            >
+            <Typography component="h1" variant="h5">
               Sign Up
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Or Sign In"}
-                </Link>
-              </Grid>
-              <Grid
-                item
-                sx={{ mt: 3, mb: 2, textAlign: "center", width: "100%" }}
+            </Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="confirm-password"
+                label="Confirm Password"
+                type="password"
+                id="confirm-password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, backgroundColor: "#f05537" }}
               >
-                <p>OR</p>
-              </Grid>
-
-              {isLoggedIn ? (
-                <>
-                  <Button
-                    variant="outlined"
-                    fullWidth
-                    color="inherit"
-                    onClick={logout}
-                    sx={{
-                      borderColor: "#000000",
-                      borderWidth: ".1rem",
-                    }}
-                  >
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <LoginButton
-                  color="inherit"
-                  component="a"
-                  href={`${backendUrl}/api/connect/google`}
-                  sx={{
-                    mt: 3,
-                    mb: 2,
-                    borderColor: "#f05537",
-                    color: "#ffffff",
-                  }}
-                  startIcon={
-                    <GoogleIcon
-                      sx={{
-                        height: "2rem",
-                        width: "auto",
-                        color: "darkred",
-                        paddingBottom: ".2rem",
-                        paddingRight: ".5rem",
-                      }}
-                    />
-                  }
+                Sign Up
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="#" variant="body2">
+                    {"Or Sign In"}
+                  </Link>
+                </Grid>
+                <Grid
+                  item
+                  sx={{ mt: 3, mb: 2, textAlign: "center", width: "100%" }}
                 >
-                  Login with Google
-                </LoginButton>
-              )}
-            </Grid>
+                  <p>OR</p>
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
-        </Box>
+        )}
+
+        {isLoggedIn ? (
+          <>
+            <Box
+              sx={{
+                height: "90vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                variant="h4"
+                component="h1"
+                gutterBottom
+                sx={{
+                  fontWeight: "initial",
+                  mt: 3,
+                  textAlign: "center",
+                  textTransform: "capitalize",
+                }}
+              >
+                Welcome {username}
+              </Typography>
+              <Button
+                variant="outlined"
+                fullWidth
+                color="inherit"
+                onClick={logout}
+                sx={{
+                  position: "sticky",
+                  bottom: 0,
+                  borderColor: "#000000",
+                  borderWidth: ".1rem",
+                }}
+              >
+                Logout
+              </Button>
+            </Box>
+          </>
+        ) : (
+          <LoginButton
+            color="inherit"
+            component="a"
+            href={`${backendUrl}/api/connect/google`}
+            sx={{
+              mt: 3,
+              mb: 2,
+              borderColor: "#f05537",
+              color: "#ffffff",
+            }}
+            startIcon={
+              <GoogleIcon
+                sx={{
+                  height: "2rem",
+                  width: "auto",
+                  color: "darkred",
+                  paddingBottom: ".2rem",
+                  paddingRight: ".5rem",
+                }}
+              />
+            }
+          >
+            Login with Google
+          </LoginButton>
+        )}
       </Container>
     </ThemeProvider>
   );

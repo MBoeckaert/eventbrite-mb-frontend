@@ -31,7 +31,7 @@ const LoginRedirect = (props) => {
         setText(
           "You have been successfully logged in. You will be redirected in a few seconds..."
         );
-        setTimeout(() => navigate("/"), 3000); // Redirect to homepage after 3 sec
+        setTimeout(() => navigate("/"), 1000); // Redirect to homepage after 3 sec
       })
       .catch((err) => {
         console.log(err);

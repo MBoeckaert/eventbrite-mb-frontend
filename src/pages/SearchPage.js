@@ -27,7 +27,7 @@ const Search = () => {
         }}
       >
         {/* dropdown */}
-        <h1>Oost-Vlaanderen</h1>
+        <h1>Evenementen</h1>
 
         <Input
           fullWidth
