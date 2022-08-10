@@ -22,7 +22,6 @@ const ClickedEventInformation = (props) => {
     }
   );
 
-  // console.log(`${backendUrl}/api/events/${eventId}`);
   return (
     <>
       <EventImage />
@@ -98,21 +97,6 @@ const ClickedEventInformation = (props) => {
             `${events.data.attributes.description}`
           )}
         </Paper>
-
-        {/* <Box
-          sx={{
-            marginY: 2,
-            paddingY: 2,
-            borderBottom: 1,
-            borderColor: "grey.500",
-          }}
-        >
-          <Typography variant="h6" component="h3" sx={{ marginBottom: 2 }}>
-            Location
-          </Typography>
-          <p>Name Loaction</p>
-          <p>Google Maps</p>
-        </Box> */}
 
         <TicketsButton />
       </Container>

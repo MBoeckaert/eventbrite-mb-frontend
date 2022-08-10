@@ -28,7 +28,6 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/likes" element={<Likes />} />
             <Route path="/tickets" element={<Tickets />} />
-            {/* <Route path="/eventInfo" element={<ClickedEventInformation />} /> */}
             <Route
               path="/eventInfo/:id"
               element={<ClickedEventInformation />}
