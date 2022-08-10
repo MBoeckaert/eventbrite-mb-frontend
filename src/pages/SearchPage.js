@@ -43,8 +43,8 @@ const Search = () => {
           }}
         />
         <Typography
-          variant="h1"
-          component="h1"
+          variant="h2"
+          component="h2"
           gutterBottom
           sx={{ fontWeight: "initial" }}
         >

@@ -1,6 +1,6 @@
 import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
-import { Stack, Alert, Link } from "@mui/material";
+import { Stack, Alert, Link, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useQuery } from "react-query";
 import { backendUrl } from "../lib/functions";
@@ -39,7 +39,10 @@ const Home = () => {
           marginY: 5,
         }}
       >
-        {isLoggedIn ? <h1>Welcome {username}</h1> : ""}
+        <Typography variant="h1" component="h1">
+          Eventbrite
+        </Typography>
+        {isLoggedIn ? <h2>Welcome {username}</h2> : ""}
         {/* can use a filter or work with geolocation API */}
         <h3>Opkomende evenementen</h3>
 
