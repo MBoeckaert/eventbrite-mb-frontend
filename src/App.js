@@ -8,9 +8,9 @@ import SignUp from "./pages/SignUp.js";
 import PayTickets from "./pages/PayTickets.js";
 import LoginRedirect from "./pages/LoginRedirect";
 import { Container } from "@mui/system";
+import ClickedEventInformation from "./pages/EventInformation.js";
 
 import { Routes, Route } from "react-router-dom";
-import ClickedEventInformation from "./pages/EventInformation.js";
 
 function App() {
   return (
@@ -24,11 +24,15 @@ function App() {
               element={<LoginRedirect />}
             />
             <Route path="/" element={<Home />} />
-            <Route path="/home/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/search" element={<Search />} />
             <Route path="/likes" element={<Likes />} />
             <Route path="/tickets" element={<Tickets />} />
-            <Route path="/eventInfo" element={<ClickedEventInformation />} />
+            {/* <Route path="/eventInfo" element={<ClickedEventInformation />} /> */}
+            <Route
+              path="/eventInfo/:id"
+              element={<ClickedEventInformation />}
+            />
             <Route path="/orderTickets" element={<OrderTickets />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/payTickets" element={<PayTickets />} />

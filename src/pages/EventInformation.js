@@ -1,9 +1,28 @@
 import EventImage from "../components/EventImage";
-import { Container, Grid, Typography, Box, Paper } from "@mui/material";
+import { Container, Grid, Typography, Paper, Skeleton } from "@mui/material";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
 import TicketsButton from "../components/TicketsButton.js";
+import { useParams } from "react-router-dom";
+import { backendUrl } from "../lib/functions";
+import { useQuery } from "react-query";
 
 const ClickedEventInformation = (props) => {
-  // console.log(props.events);
+  const { id } = useParams();
+
+  const { isLoading: isLoadingEventInfo, data: events } = useQuery(
+    ["eventInfo", id],
+    async () => {
+      const data = await fetch(`${backendUrl}/api/events/${id}`).then((r) =>
+        r.json()
+      );
+      console.log(data);
+      return data;
+    }
+  );
+
+  // console.log(`${backendUrl}/api/events/${eventId}`);
   return (
     <>
       <EventImage />
@@ -13,7 +32,8 @@ const ClickedEventInformation = (props) => {
           component="h1"
           sx={{ marginY: 5, fontWeight: 900 }}
         >
-          Lake Night 2022
+          {/* {id} */}
+          {isLoadingEventInfo ? <Skeleton /> : `${events.data.attributes.name}`}
         </Typography>
         <Grid
           container
@@ -22,30 +42,40 @@ const ClickedEventInformation = (props) => {
         >
           <Grid item xs={2}>
             <Typography variant="body1" component="p">
-              Calender Icon
+              <CalendarTodayIcon />
             </Typography>
           </Grid>
           <Grid item xs={10}>
-            <p>Date</p>
-            <p>Hour</p>
+            {isLoadingEventInfo ? (
+              <Skeleton />
+            ) : (
+              `${events.data.attributes.date}`
+            )}
           </Grid>
           <Grid item xs={2}>
             <Typography variant="body1" component="p">
-              Location Icon
+              <LocationOnIcon />
             </Typography>
           </Grid>
           <Grid item xs={10}>
-            <p>Name Location</p>
-            <p>Adress Location</p>
+            {isLoadingEventInfo ? (
+              <Skeleton />
+            ) : (
+              `${events.data.attributes.location}`
+            )}
           </Grid>
           <Grid item xs={2}>
             <Typography variant="body1" component="p">
-              Tickets Icon
+              <ConfirmationNumberOutlinedIcon />
             </Typography>
           </Grid>
           <Grid item xs={10} sx={{ marginBottom: 2 }}>
-            <p>Price Range</p>
-            <p>Price information</p>
+            €
+            {isLoadingEventInfo ? (
+              <Skeleton />
+            ) : (
+              `${events.data.attributes.price}`
+            )}
           </Grid>
         </Grid>
 
@@ -60,12 +90,16 @@ const ClickedEventInformation = (props) => {
           }}
         >
           <Typography variant="h6" component="h3" sx={{ marginBottom: 2 }}>
-            Extra
+            Beschrijving
           </Typography>
-          <p>Extra Information</p>
+          {isLoadingEventInfo ? (
+            <Skeleton />
+          ) : (
+            `${events.data.attributes.description}`
+          )}
         </Paper>
 
-        <Box
+        {/* <Box
           sx={{
             marginY: 2,
             paddingY: 2,
@@ -78,7 +112,7 @@ const ClickedEventInformation = (props) => {
           </Typography>
           <p>Name Loaction</p>
           <p>Google Maps</p>
-        </Box>
+        </Box> */}
 
         <TicketsButton />
       </Container>

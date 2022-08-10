@@ -1,12 +1,14 @@
 import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
-import { Stack, Alert } from "@mui/material";
+import { Stack, Alert, Link } from "@mui/material";
 import { Container } from "@mui/system";
 import { useQuery } from "react-query";
 import { backendUrl } from "../lib/functions";
 import { useStore } from "../store";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+
+// import useFetch from "../hooks/useFetch";
 
 const Home = () => {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
@@ -22,6 +24,13 @@ const Home = () => {
     );
     return data;
   });
+
+  // const { loading, error, data } = useFetch(`http://localhost:1337/events`);
+
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>error sadFace</p>;
+
+  console.log(`${backendUrl}/api/events`);
 
   return (
     <>
@@ -70,12 +79,15 @@ const Home = () => {
                 })
                 .map((event) => (
                   <SplideSlide key={event.id}>
-                    <EventOverview
-                      picture={event.attributes.picture}
-                      name={event.attributes.name}
-                      date={event.attributes.date}
-                      location={event.attributes.location}
-                    />
+                    <Link to={`/eventInfo/${event.id}`} underline="none">
+                      {console.log(event.id)}
+                      <EventOverview
+                        picture={event.attributes.picture}
+                        name={event.attributes.name}
+                        date={event.attributes.date}
+                        location={event.attributes.location}
+                      />
+                    </Link>
                   </SplideSlide>
                 ))}
           </Splide>

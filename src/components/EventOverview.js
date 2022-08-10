@@ -1,7 +1,7 @@
 import EventImage from "./EventImage";
 import { Card, Grid, Typography, Box } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -24,15 +24,14 @@ const theme = createTheme({
 });
 
 const EventOverview = (props) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  // const { id } = useParams();
+  // console.log(eventId);
 
   return (
     <>
-      <Card
-        variant="outlined"
-        onClick={() => navigate("/eventInfo")}
-        sx={{ cursor: "pointer" }}
-      >
+      <Card variant="outlined" sx={{ cursor: "pointer" }}>
+        {/* <Link to={`/eventInfo/${id}`} underline="none"> */}
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <EventImage picture={props.picture} />
@@ -85,6 +84,7 @@ const EventOverview = (props) => {
             </ThemeProvider>
           </Grid>
         </Grid>
+        {/* </Link> */}
       </Card>
     </>
   );
