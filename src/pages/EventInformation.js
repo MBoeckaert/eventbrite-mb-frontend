@@ -1,5 +1,11 @@
-import EventImage from "../components/EventImage";
-import { Container, Grid, Typography, Paper, Skeleton } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Typography,
+  Paper,
+  Skeleton,
+  CardMedia,
+} from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
@@ -24,16 +30,15 @@ const ClickedEventInformation = (props) => {
 
   return (
     <>
-      {/* <EventImage /> */}
       {isLoadingEventInfo ? (
         <Skeleton />
       ) : (
-        <img
+        <CardMedia
+          component="img"
           alt={events.data.attributes.picture.data.attributes.alternativeText}
           src={`${
             backendUrl + events.data.attributes.picture.data.attributes.url
           }`}
-          className="img"
         />
       )}
 

@@ -26,7 +26,6 @@ const Search = () => {
           marginY: 5,
         }}
       >
-        {/* dropdown */}
         <h1>Evenementen</h1>
 
         <Input
