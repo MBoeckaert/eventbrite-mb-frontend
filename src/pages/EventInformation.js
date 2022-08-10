@@ -14,9 +14,9 @@ const ClickedEventInformation = (props) => {
   const { isLoading: isLoadingEventInfo, data: events } = useQuery(
     ["eventInfo", id],
     async () => {
-      const data = await fetch(`${backendUrl}/api/events/${id}`).then((r) =>
-        r.json()
-      );
+      const data = await fetch(
+        `${backendUrl}/api/events/${id}?populate=*`
+      ).then((r) => r.json());
       console.log(data);
       return data;
     }
@@ -24,7 +24,19 @@ const ClickedEventInformation = (props) => {
 
   return (
     <>
-      <EventImage />
+      {/* <EventImage /> */}
+      {isLoadingEventInfo ? (
+        <Skeleton />
+      ) : (
+        <img
+          alt={events.data.attributes.picture.data.attributes.alternativeText}
+          src={`${
+            backendUrl + events.data.attributes.picture.data.attributes.url
+          }`}
+          className="img"
+        />
+      )}
+
       <Container>
         <Typography
           variant="h2"
