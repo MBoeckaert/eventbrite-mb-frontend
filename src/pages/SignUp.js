@@ -158,6 +158,20 @@ export default function SignIn() {
                 Welcome {username}
               </Typography>
               <Button
+                variant="contained"
+                fullWidth
+                color="inherit"
+                href={`/create`}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  backgroundColor: "#f05537",
+                  color: "#FFFFFF",
+                }}
+              >
+                Create Event
+              </Button>
+              <Button
                 variant="outlined"
                 fullWidth
                 color="inherit"

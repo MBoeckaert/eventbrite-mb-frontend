@@ -9,6 +9,7 @@ import PayTickets from "./pages/PayTickets.js";
 import LoginRedirect from "./pages/LoginRedirect";
 import { Container } from "@mui/system";
 import ClickedEventInformation from "./pages/EventInformation.js";
+import CreateEvent from "./pages/CreateEvent.js";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/orderTickets" element={<OrderTickets />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/payTickets" element={<PayTickets />} />
+            <Route path="/create" element={<CreateEvent />} />
           </Route>
         </Routes>
       </Container>
