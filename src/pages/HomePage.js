@@ -19,8 +19,8 @@ const Home = () => {
     error: eventsLoadingError,
     data: events,
   } = useQuery(["events"], async () => {
-    const data = await fetch(`${backendUrl}api/events?populate=*`).then((res) =>
-      res.json()
+    const data = await fetch(`${backendUrl}/api/events?populate=*`).then(
+      (res) => res.json()
     );
     return data;
   });
