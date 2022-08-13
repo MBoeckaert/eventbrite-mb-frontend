@@ -83,7 +83,7 @@ const Search = () => {
               .map((event) => (
                 <EventOverview
                   key={event.id}
-                  img={event.attributes.img}
+                  picture={event.attributes.picture.data.attributes.url}
                   name={event.attributes.name}
                   date={event.attributes.date}
                   location={event.attributes.location}
