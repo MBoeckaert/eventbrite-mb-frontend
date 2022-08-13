@@ -13,7 +13,7 @@ const Search = () => {
     error: eventsLoadingError,
     data: events,
   } = useQuery(["events"], async () => {
-    const data = await fetch(`${backendUrl}api/events`).then((res) =>
+    const data = await fetch(`${backendUrl}/api/events`).then((res) =>
       res.json()
     );
     return data;

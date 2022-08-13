@@ -30,7 +30,7 @@ const Home = () => {
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>error sadFace</p>;
 
-  console.log(`${backendUrl}api/events`);
+  console.log(`${backendUrl}/api/events`);
 
   return (
     <>
