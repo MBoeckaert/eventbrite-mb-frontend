@@ -20,9 +20,9 @@ const ClickedEventInformation = (props) => {
   const { isLoading: isLoadingEventInfo, data: events } = useQuery(
     ["eventInfo", id],
     async () => {
-      const data = await fetch(
-        `${backendUrl}/api/events/${id}?populate=*`
-      ).then((r) => r.json());
+      const data = await fetch(`${backendUrl}api/events/${id}?populate=*`).then(
+        (r) => r.json()
+      );
       console.log(data);
       return data;
     }

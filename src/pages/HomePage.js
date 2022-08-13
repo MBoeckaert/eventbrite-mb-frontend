@@ -19,8 +19,8 @@ const Home = () => {
     error: eventsLoadingError,
     data: events,
   } = useQuery(["events"], async () => {
-    const data = await fetch(`${backendUrl}/api/events?populate=*`).then(
-      (res) => res.json()
+    const data = await fetch(`${backendUrl}api/events?populate=*`).then((res) =>
+      res.json()
     );
     return data;
   });
@@ -30,7 +30,7 @@ const Home = () => {
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>error sadFace</p>;
 
-  console.log(`${backendUrl}/api/events`);
+  console.log(`${backendUrl}api/events`);
 
   return (
     <>

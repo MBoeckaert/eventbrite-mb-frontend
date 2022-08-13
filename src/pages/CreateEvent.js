@@ -66,7 +66,7 @@ const CreateEvent = () => {
         <CreateButton
           color="inherit"
           component="a"
-          // href={`${backendUrl}/api/connect/google`}
+          // href={`${backendUrl}api/connect/google`}
           sx={{
             mt: 3,
             mb: 2,
