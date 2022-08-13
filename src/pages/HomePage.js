@@ -50,7 +50,7 @@ const Home = () => {
         <Stack spacing={4}>
           {eventsAreLoading && <LoadingInfo />}
           {eventsLoadingError && (
-            <Alert severity="error">Could not load the page</Alert>
+            <Alert severity="error">Could not load the data</Alert>
           )}
           <Splide
             options={{
