@@ -13,7 +13,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { backendUrl } from "../lib/functions";
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useStore } from "../store";
 
 import { styled } from "@mui/material/styles";
@@ -55,12 +55,12 @@ const CreateEvent = () => {
   const jwt = useStore((state) => state.jwt);
 
   const queryClient = useQueryClient();
-  // const { isLoading, data: categories } = useQuery("categories", async () => {
-  //   const data = await fetch(`${backendUrl}/api/categories`).then((r) =>
-  //     r.json()
-  //   );
-  //   return data;
-  // });
+  const { isLoading, data: categories } = useQuery("categories", async () => {
+    const data = await fetch(`${backendUrl}/api/categories`).then((r) =>
+      r.json()
+    );
+    return data;
+  });
 
   const postEvent = async (data) => {
     return await fetch(`${backendUrl}/api/events`, {
