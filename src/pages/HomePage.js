@@ -1,6 +1,6 @@
 import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
-import { Stack, Alert, Link, Typography } from "@mui/material";
+import { Stack, Alert, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useQuery } from "react-query";
 import { backendUrl } from "../lib/functions";
@@ -8,21 +8,12 @@ import { useStore } from "../store";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
-import { useState } from "react";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-
 // import useFetch from "../hooks/useFetch";
 
 const Home = () => {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
   const username = useStore((state) => state.username);
 
-  //test click button
-  const [clickedButton, setClickedButton] = useState(true);
-  const handleClick = () => {
-    setClickedButton((current) => !current);
-  };
   //fetch events from strapi
   const {
     isLoading: eventsAreLoading,
@@ -92,25 +83,20 @@ const Home = () => {
                 })
                 .map((event) => (
                   <SplideSlide key={event.id}>
-                    <Link to={`/eventInfo/${event.id}`} underline="none">
-                      {console.log(event.id)}
-                      <EventOverview
-                        // picture={event.attributes.picture.data.attributes.url}
-                        name={event.attributes.name}
-                        date={event.attributes.date}
-                        location={event.attributes.location}
-                      />
-                    </Link>
+                    {/* <Link to={`/eventInfo/${event.id}`} underline="none"> */}
+                    {console.log(event.id)}
+                    <EventOverview
+                      // picture={event.attributes.picture.data.attributes.url}
+                      id={event.attributes.id}
+                      name={event.attributes.name}
+                      date={event.attributes.date}
+                      location={event.attributes.location}
+                    />
+                    {/* </Link> */}
                   </SplideSlide>
                 ))}
           </Splide>
         </Stack>
-        <div onClick={handleClick}>
-          <Typography variant="body3" component="span">
-            {clickedButton ? <FavoriteBorderIcon /> : <FavoriteIcon />}
-            {console.log(handleClick)}
-          </Typography>
-        </div>
       </Container>
     </>
   );
