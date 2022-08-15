@@ -78,18 +78,16 @@ const EventOverview = (props) => {
                     <Typography variant="subtitle2" component="h3">
                       {props.name}
                     </Typography>
-                    <Grid container spacing={2}>
-                      <Grid item xs={8}>
-                        <Typography
-                          variant="body2"
-                          component="span"
-                          sx={{ color: "Grey" }}
-                        >
-                          {props.location}
-                        </Typography>
-                      </Grid>
-                      {/* end Link here */}
+                    <Grid item>
+                      <Typography
+                        variant="body2"
+                        component="span"
+                        sx={{ color: "Grey" }}
+                      >
+                        {props.location}
+                      </Typography>
                     </Grid>
+                    {/* end Link here */}
                   </Box>
                 </ThemeProvider>
               </Grid>
