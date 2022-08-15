@@ -36,7 +36,7 @@ const EventOverview = (props) => {
         <Grid container spacing={2}>
           <Link to={`/eventInfo/${props.id}`} underline="none">
             <Grid item container spacing={2} component="span">
-              <Grid item>
+              <Grid item xs={4}>
                 {/* <img
               src={`${backendUrl + props.picture} `}
               alt="event pic"
@@ -49,7 +49,7 @@ const EventOverview = (props) => {
                   variant="square"
                 />
               </Grid>
-              <Grid item>
+              <Grid item xs={4}>
                 <ThemeProvider theme={theme}>
                   <Typography
                     variant="h6"
