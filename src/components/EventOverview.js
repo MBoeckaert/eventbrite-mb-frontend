@@ -35,53 +35,65 @@ const EventOverview = (props) => {
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
         <Grid container spacing={2}>
           <Link to={`/eventInfo/${props.id}`} underline="none">
-            <Grid item xs={4} sx={{ width: "100%" }}>
-              {/* <img
+            <Grid container item spacing={2}>
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  width: "100%",
+                  height: "60%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-around",
+                }}
+              >
+                {/* <img
               src={`${backendUrl + props.picture} `}
               alt="event pic"
               className="img-small"
             /> */}
-              <Avatar
-                // src={`${backendUrl + props.picture} `}
-                alt="event pic"
-                sx={{ width: 252, height: 102 }}
-                variant="square"
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <ThemeProvider theme={theme}>
-                <Box
-                  sx={{
-                    height: "60%",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-around",
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    component="h2"
-                    sx={{ color: "red", marginTop: "1rem" }}
+                <Avatar
+                  // src={`${backendUrl + props.picture} `}
+                  alt="event pic"
+                  sx={{ width: 252, height: 102 }}
+                  variant="square"
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <ThemeProvider theme={theme}>
+                  <Box
+                  // sx={{
+                  //   height: "60%",
+                  //   display: "flex",
+                  //   flexDirection: "column",
+                  //   justifyContent: "space-around",
+                  // }}
                   >
-                    {props.date}
-                  </Typography>
-                  <Typography variant="subtitle2" component="h3">
-                    {props.name}
-                  </Typography>
-                  <Grid container spacing={2}>
-                    <Grid item xs={8}>
-                      <Typography
-                        variant="body2"
-                        component="span"
-                        sx={{ color: "Grey" }}
-                      >
-                        {props.location}
-                      </Typography>
+                    <Typography
+                      variant="h6"
+                      component="h2"
+                      sx={{ color: "red", marginTop: "1rem" }}
+                    >
+                      {props.date}
+                    </Typography>
+                    <Typography variant="subtitle2" component="h3">
+                      {props.name}
+                    </Typography>
+                    <Grid container spacing={2}>
+                      <Grid item xs={8}>
+                        <Typography
+                          variant="body2"
+                          component="span"
+                          sx={{ color: "Grey" }}
+                        >
+                          {props.location}
+                        </Typography>
+                      </Grid>
+                      {/* end Link here */}
                     </Grid>
-                    {/* end Link here */}
-                  </Grid>
-                </Box>
-              </ThemeProvider>
+                  </Box>
+                </ThemeProvider>
+              </Grid>
             </Grid>
           </Link>
           <Grid item xs={2}>
