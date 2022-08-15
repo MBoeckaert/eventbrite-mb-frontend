@@ -41,7 +41,7 @@ const EventOverview = (props) => {
                 <Avatar
                   // src={`${backendUrl + props.picture} `}
                   alt="event pic"
-                  // sx={{ width: 252, height: 102 }}
+                  sx={{ width: 252, height: 102 }}
                   variant="square"
                 />
               </Link>
