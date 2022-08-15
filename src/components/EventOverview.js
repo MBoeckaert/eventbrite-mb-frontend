@@ -24,9 +24,9 @@ const theme = createTheme({
 });
 
 const EventOverview = (props) => {
-  const [clickedButton, setClickedButton] = useState(false);
+  const [clickedButton, setClickedButton] = useState(true);
   const handleClick = () => {
-    setClickedButton(true);
+    setClickedButton(false);
   };
 
   return (
@@ -82,15 +82,13 @@ const EventOverview = (props) => {
                       <ShareIcon />
                     </Typography>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={2} onClick={handleClick}>
                     <Typography variant="body3" component="span">
-                      <div onClick={handleClick}>
-                        {clickedButton ? (
-                          <FavoriteBorderIcon />
-                        ) : (
-                          <FavoriteIcon />
-                        )}
-                      </div>
+                      {clickedButton ? (
+                        <FavoriteBorderIcon />
+                      ) : (
+                        <FavoriteIcon />
+                      )}
                     </Typography>
                   </Grid>
                 </Grid>
