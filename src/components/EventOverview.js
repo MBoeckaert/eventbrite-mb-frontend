@@ -1,4 +1,4 @@
-import { Card, Grid, Typography, Box, Avatar } from "@mui/material";
+import { Card, Grid, Typography, Avatar } from "@mui/material";
 import { createTheme, ThemeProvider, Link } from "@mui/material";
 import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
@@ -35,17 +35,8 @@ const EventOverview = (props) => {
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
         <Grid container spacing={2}>
           <Link to={`/eventInfo/${props.id}`} underline="none">
-            <Grid item container>
-              <Grid
-                item
-                // sx={{
-                //   width: "100%",
-                //   height: "60%",
-                //   display: "flex",
-                //   flexDirection: "row",
-                //   justifyContent: "space-around",
-                // }}
-              >
+            <Grid item container spacing={2} xs={8}>
+              <Grid item>
                 {/* <img
               src={`${backendUrl + props.picture} `}
               alt="event pic"
@@ -60,35 +51,26 @@ const EventOverview = (props) => {
               </Grid>
               <Grid item>
                 <ThemeProvider theme={theme}>
-                  <Box
-                  // sx={{
-                  //   height: "60%",
-                  //   display: "flex",
-                  //   flexDirection: "column",
-                  //   justifyContent: "space-around",
-                  // }}
+                  <Typography
+                    variant="h6"
+                    component="h2"
+                    sx={{ color: "red", marginTop: "1rem" }}
                   >
+                    {props.date}
+                  </Typography>
+                  <Typography variant="subtitle2" component="h3">
+                    {props.name}
+                  </Typography>
+                  <Grid item>
                     <Typography
-                      variant="h6"
-                      component="h2"
-                      sx={{ color: "red", marginTop: "1rem" }}
+                      variant="body2"
+                      component="span"
+                      sx={{ color: "Grey" }}
                     >
-                      {props.date}
+                      {props.location}
                     </Typography>
-                    <Typography variant="subtitle2" component="h3">
-                      {props.name}
-                    </Typography>
-                    <Grid item>
-                      <Typography
-                        variant="body2"
-                        component="span"
-                        sx={{ color: "Grey" }}
-                      >
-                        {props.location}
-                      </Typography>
-                    </Grid>
-                    {/* end Link here */}
-                  </Box>
+                  </Grid>
+                  {/* end Link here */}
                 </ThemeProvider>
               </Grid>
             </Grid>
