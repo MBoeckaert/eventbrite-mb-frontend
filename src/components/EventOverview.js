@@ -1,10 +1,10 @@
 import { Card, Grid, Typography, Box, Avatar } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { useState } from "react";
+// import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { backendUrl } from "../lib/functions";
+// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+// import FavoriteIcon from "@mui/icons-material/Favorite";
+// import { backendUrl } from "../lib/functions";
 
 const theme = createTheme({
   components: {
@@ -24,11 +24,6 @@ const theme = createTheme({
 });
 
 const EventOverview = (props) => {
-  const [clickedButton, setClickedButton] = useState(true);
-  const handleClick = () => {
-    setClickedButton(false);
-  };
-
   return (
     <>
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
@@ -98,12 +93,6 @@ const EventOverview = (props) => {
           </Grid>
         </Grid>
       </Card>
-      <div onClick={handleClick}>
-        <Typography variant="body3" component="span">
-          {clickedButton ? <FavoriteBorderIcon /> : <FavoriteIcon />}
-          {console.log(handleClick)}
-        </Typography>
-      </div>
     </>
   );
 };

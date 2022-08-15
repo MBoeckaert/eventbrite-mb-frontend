@@ -8,11 +8,21 @@ import { useStore } from "../store";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
+import { useState } from "react";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 // import useFetch from "../hooks/useFetch";
 
 const Home = () => {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
   const username = useStore((state) => state.username);
+
+  //test click button
+  const [clickedButton, setClickedButton] = useState(true);
+  const handleClick = () => {
+    setClickedButton(false);
+  };
   //fetch events from strapi
   const {
     isLoading: eventsAreLoading,
@@ -95,6 +105,12 @@ const Home = () => {
                 ))}
           </Splide>
         </Stack>
+        <div onClick={handleClick}>
+          <Typography variant="body3" component="span">
+            {clickedButton ? <FavoriteBorderIcon /> : <FavoriteIcon />}
+            {console.log(handleClick)}
+          </Typography>
+        </div>
       </Container>
     </>
   );
