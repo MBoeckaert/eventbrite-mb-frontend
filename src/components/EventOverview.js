@@ -1,9 +1,9 @@
 import { Card, Grid, Typography, Box, Avatar } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
-// import { useState } from "react";
+import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
-// import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 // import { backendUrl } from "../lib/functions";
 
 const theme = createTheme({
@@ -24,6 +24,12 @@ const theme = createTheme({
 });
 
 const EventOverview = (props) => {
+  //test click button
+  const [clickedButton, setClickedButton] = useState(true);
+  const handleClick = () => {
+    setClickedButton((current) => !current);
+  };
+
   return (
     <>
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
@@ -77,7 +83,7 @@ const EventOverview = (props) => {
                     </Typography>
                   </Grid>
                   {/* end Link here */}
-                  {/* <Grid item xs={2} onClick={handleClick}>
+                  <Grid item xs={2} onClick={handleClick}>
                     <Typography variant="body3" component="span">
                       {clickedButton ? (
                         <FavoriteBorderIcon />
@@ -86,7 +92,7 @@ const EventOverview = (props) => {
                       )}
                       {console.log(handleClick)}
                     </Typography>
-                  </Grid> */}
+                  </Grid>
                 </Grid>
               </Box>
             </ThemeProvider>
