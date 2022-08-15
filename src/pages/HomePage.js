@@ -1,6 +1,6 @@
 import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
-import { Stack, Alert, Typography } from "@mui/material";
+import { Stack, Alert, Typography, Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import { useQuery } from "react-query";
 import { backendUrl } from "../lib/functions";
@@ -97,6 +97,17 @@ const Home = () => {
                 ))}
           </Splide>
         </Stack>
+        <Grid container spacing={2}>
+          <Grid item xs={8}>
+            I'm xs=8
+          </Grid>
+          <Grid item xs={2}>
+            I'm xs=2
+          </Grid>
+          <Grid item xs={2}>
+            I'm xs=2
+          </Grid>
+        </Grid>
       </Container>
     </>
   );
