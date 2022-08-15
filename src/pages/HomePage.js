@@ -98,8 +98,9 @@ const Home = () => {
           </Splide>
         </Stack>
         <Grid container spacing={2}>
-          <Grid item xs={8}>
-            I'm xs=8
+          <Grid item xs={8} container>
+            <Grid item>I'm 4</Grid>
+            <Grid item>I'm 4</Grid>
           </Grid>
           <Grid item xs={2}>
             I'm xs=2
