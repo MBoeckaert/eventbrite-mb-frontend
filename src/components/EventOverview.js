@@ -87,7 +87,12 @@ const EventOverview = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Box display="grid" gridTemplateColumns="repeat{ 12, 1fr}" gap={2}>
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat{ 12, 1fr}"
+          gap={2}
+          fullWidth
+        >
           <Link to={`/eventInfo/${props.id}`} underline="none">
             <Box gridColumn="span 8">
               <Box>
