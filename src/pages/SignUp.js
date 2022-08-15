@@ -134,7 +134,7 @@ export default function SignIn() {
           </Box>
         )}
 
-        {/* {isLoggedIn ? (
+        {isLoggedIn ? (
           <>
             <Box
               sx={{
@@ -212,9 +212,9 @@ export default function SignIn() {
           >
             Login with Google
           </LoginButton>
-        )} */}
+        )}
 
-        <Button
+        {/* <Button
           variant="contained"
           fullWidth
           color="inherit"
@@ -227,7 +227,7 @@ export default function SignIn() {
           }}
         >
           Create Event
-        </Button>
+        </Button> */}
       </Container>
     </ThemeProvider>
   );
