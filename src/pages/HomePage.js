@@ -99,10 +99,10 @@ const Home = () => {
         </Stack>
         <Grid container spacing={2}>
           <Grid item xs={8} container>
-            <Grid item xs={4}>
+            <Grid item xs={6}>
               I'm 4
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={6}>
               I'm 4
             </Grid>
           </Grid>
