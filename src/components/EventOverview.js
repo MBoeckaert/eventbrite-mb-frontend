@@ -33,9 +33,9 @@ const EventOverview = (props) => {
   return (
     <>
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} xs={12}>
           <Link to={`/eventInfo/${props.id}`} underline="none">
-            <Grid container item xs={8}>
+            <Grid item xs={8} container>
               <Grid
                 item
                 sx={{
