@@ -38,7 +38,6 @@ const EventOverview = (props) => {
             <Grid container item xs={8}>
               <Grid
                 item
-                xs={4}
                 sx={{
                   width: "100%",
                   height: "60%",
@@ -59,7 +58,7 @@ const EventOverview = (props) => {
                   variant="square"
                 />
               </Grid>
-              <Grid item xs={4}>
+              <Grid item>
                 <ThemeProvider theme={theme}>
                   <Box
                   // sx={{
