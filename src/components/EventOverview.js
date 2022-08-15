@@ -35,7 +35,7 @@ const EventOverview = (props) => {
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
         <Grid container spacing={2}>
           <Link to={`/eventInfo/${props.id}`} underline="none">
-            <Grid container item spacing={2}>
+            <Grid container item spacing={8}>
               <Grid
                 item
                 xs={4}
@@ -43,7 +43,7 @@ const EventOverview = (props) => {
                   width: "100%",
                   height: "60%",
                   display: "flex",
-                  flexDirection: "column",
+                  flexDirection: "row",
                   justifyContent: "space-around",
                 }}
               >
