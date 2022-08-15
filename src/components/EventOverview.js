@@ -45,11 +45,11 @@ const EventOverview = (props) => {
                 <Avatar
                   // src={`${backendUrl + props.picture} `}
                   alt="event pic"
-                  // sx={{ width: 252, height: 102 }}
+                  sx={{ width: 252, height: 102 }}
                   variant="square"
                 />
               </Grid>
-              <Grid item>
+              <Grid item sx={{ width: 252, height: 102 }}>
                 <ThemeProvider theme={theme}>
                   <Typography
                     variant="h6"
