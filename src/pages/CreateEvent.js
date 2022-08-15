@@ -120,8 +120,7 @@ const CreateEvent = () => {
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DesktopDatePicker
             label="Datum"
-            inputFormat="dd/mm/yyyy"
-            required
+            inputFormat="MM/dd/yyyy"
             value={value}
             onChange={handleChange}
             renderInput={(params) => <TextField {...params} />}
