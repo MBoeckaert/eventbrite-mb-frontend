@@ -21,7 +21,7 @@ const Home = () => {
   //test click button
   const [clickedButton, setClickedButton] = useState(true);
   const handleClick = () => {
-    setClickedButton(false);
+    setClickedButton((current) => !current);
   };
   //fetch events from strapi
   const {
