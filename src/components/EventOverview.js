@@ -33,7 +33,7 @@ const EventOverview = (props) => {
   return (
     <>
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} fullWidth>
           <Link to={`/eventInfo/${props.id}`} underline="none">
             <Grid item container spacing={2} component="span">
               <Grid item>
@@ -45,7 +45,7 @@ const EventOverview = (props) => {
                 <Avatar
                   // src={`${backendUrl + props.picture} `}
                   alt="event pic"
-                  // sx={{ width: 252, height: 102 }}
+                  sx={{ width: 252, height: 102 }}
                   variant="square"
                 />
               </Grid>
