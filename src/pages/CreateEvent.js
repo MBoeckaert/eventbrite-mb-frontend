@@ -124,7 +124,7 @@ const CreateEvent = () => {
             required
             value={value}
             onChange={handleChange}
-            // renderInput={(params) => <TextField {...params} />}
+            renderInput={(params) => <TextField {...params} />}
             error={!!errors?.name}
             helperText={errors?.name?.message}
             {...register("date", {
