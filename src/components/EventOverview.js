@@ -35,7 +35,7 @@ const EventOverview = (props) => {
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
         <Grid container spacing={2}>
           <Link to={`/eventInfo/${props.id}`} underline="none">
-            <Grid item container spacing={2}>
+            <Grid item container spacing={2} component="span">
               <Grid item>
                 {/* <img
               src={`${backendUrl + props.picture} `}
@@ -87,7 +87,7 @@ const EventOverview = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        <Box
+        {/* <Box
           display="grid"
           gridTemplateColumns="repeat{ 12, 1fr}"
           gap={2}
@@ -125,7 +125,7 @@ const EventOverview = (props) => {
                     </Typography>
                   </Grid>
                   {/* end Link here */}
-                </ThemeProvider>
+        {/* </ThemeProvider>
               </Box>
             </Box>
           </Link>
@@ -140,7 +140,7 @@ const EventOverview = (props) => {
               {console.log(handleClick)}
             </Typography>
           </Box>
-        </Box>
+        </Box>  */}
       </Card>
     </>
   );
