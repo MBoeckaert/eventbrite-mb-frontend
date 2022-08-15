@@ -124,11 +124,11 @@ const CreateEvent = () => {
             value={value}
             onChange={handleChange}
             renderInput={(params) => <TextField {...params} />}
-            error={!!errors?.name}
-            helperText={errors?.name?.message}
-            {...register("date", {
-              required: "Date is required",
-            })}
+            // error={!!errors?.name}
+            // helperText={errors?.name?.message}
+            // {...register("date", {
+            //   required: "Date is required",
+            // })}
           />
         </LocalizationProvider>
         <TextField
