@@ -87,7 +87,7 @@ const Home = () => {
                     {console.log(event.id)}
                     <EventOverview
                       // picture={event.attributes.picture.data.attributes.url}
-                      id={event.attributes.id}
+                      id={event.id}
                       name={event.attributes.name}
                       date={event.attributes.date}
                       location={event.attributes.location}
