@@ -33,18 +33,9 @@ const EventOverview = (props) => {
   return (
     <>
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            // height: "60%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-around",
-          }}
-        >
+        <Grid container spacing={2}>
           <Link to={`/eventInfo/${props.id}`} underline="none">
-            <Grid item container spacing={2} component="span">
+            <Grid item container spacing={2} component="span" width="65%">
               <Grid item>
                 {/* <img
               src={`${backendUrl + props.picture} `}
