@@ -121,9 +121,13 @@ const CreateEvent = () => {
           <DesktopDatePicker
             label="Datum"
             inputFormat="MM/dd/yyyy"
+            required
             value={value}
             onChange={handleChange}
             renderInput={(params) => <TextField {...params} />}
+            {...register("date", {
+              required: "Date is required",
+            })}
           />
         </LocalizationProvider>
         <TextField

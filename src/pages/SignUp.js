@@ -213,21 +213,6 @@ export default function SignIn() {
             Login with Google
           </LoginButton>
         )}
-
-        {/* <Button
-          variant="contained"
-          fullWidth
-          color="inherit"
-          href={`/create`}
-          sx={{
-            mt: 3,
-            mb: 2,
-            backgroundColor: "#f05537",
-            color: "#FFFFFF",
-          }}
-        >
-          Create Event
-        </Button> */}
       </Container>
     </ThemeProvider>
   );
