@@ -1,4 +1,4 @@
-import { Card, Grid, Typography, Avatar } from "@mui/material";
+import { Card, Grid, Typography, Avatar, Box } from "@mui/material";
 import { createTheme, ThemeProvider, Link } from "@mui/material";
 import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
@@ -35,18 +35,7 @@ const EventOverview = (props) => {
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
         <Grid container spacing={2}>
           <Link to={`/eventInfo/${props.id}`} underline="none">
-            <Grid
-              item
-              container
-              spacing={2}
-              xs={8}
-              sx={{
-                width: "100%",
-                height: "60%",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
+            <Grid item container spacing={2}>
               <Grid item>
                 {/* <img
               src={`${backendUrl + props.picture} `}
@@ -98,6 +87,55 @@ const EventOverview = (props) => {
             </Typography>
           </Grid>
         </Grid>
+        <Box display="grid" gridTemplateColumns="repeat{ 12, 1fr}" gap={2}>
+          <Link to={`/eventInfo/${props.id}`} underline="none">
+            <Box gridColumn="span 8">
+              <Box>
+                <Avatar
+                  // src={`${backendUrl + props.picture} `}
+                  alt="event pic"
+                  sx={{ width: 252, height: 102 }}
+                  variant="square"
+                />
+              </Box>
+              <Box>
+                <ThemeProvider theme={theme}>
+                  <Typography
+                    variant="h6"
+                    component="h2"
+                    sx={{ color: "red", marginTop: "1rem" }}
+                  >
+                    {props.date}
+                  </Typography>
+                  <Typography variant="subtitle2" component="h3">
+                    {props.name}
+                  </Typography>
+                  <Grid item>
+                    <Typography
+                      variant="body2"
+                      component="span"
+                      sx={{ color: "Grey" }}
+                    >
+                      {props.location}
+                    </Typography>
+                  </Grid>
+                  {/* end Link here */}
+                </ThemeProvider>
+              </Box>
+            </Box>
+          </Link>
+          <Box gridColumn="span 2">
+            <Typography variant="body3" component="span">
+              <ShareIcon />
+            </Typography>
+          </Box>
+          <Box gridColumn="span 2" onClick={handleClick}>
+            <Typography variant="body3" component="span">
+              {clickedButton ? <FavoriteBorderIcon /> : <FavoriteIcon />}
+              {console.log(handleClick)}
+            </Typography>
+          </Box>
+        </Box>
       </Card>
     </>
   );
