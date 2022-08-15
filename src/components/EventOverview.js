@@ -66,7 +66,6 @@ const EventOverview = (props) => {
                 <Typography variant="subtitle2" component="h3">
                   {props.name}
                 </Typography>
-                {/* Make this grid container a component as well, otherwise too much grids nested */}
                 <Grid container spacing={2}>
                   <Grid item xs={8}>
                     <Typography
@@ -82,21 +81,29 @@ const EventOverview = (props) => {
                       <ShareIcon />
                     </Typography>
                   </Grid>
-                  <Grid item xs={2} onClick={handleClick}>
+                  {/* end Link here */}
+                  {/* <Grid item xs={2} onClick={handleClick}>
                     <Typography variant="body3" component="span">
                       {clickedButton ? (
                         <FavoriteBorderIcon />
                       ) : (
                         <FavoriteIcon />
                       )}
+                      {console.log(handleClick)}
                     </Typography>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Box>
             </ThemeProvider>
           </Grid>
         </Grid>
       </Card>
+      <div onClick={handleClick}>
+        <Typography variant="body3" component="span">
+          {clickedButton ? <FavoriteBorderIcon /> : <FavoriteIcon />}
+          {console.log(handleClick)}
+        </Typography>
+      </div>
     </>
   );
 };
