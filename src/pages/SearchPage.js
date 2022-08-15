@@ -1,6 +1,6 @@
 import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
-import { Stack, Typography, Input, Alert } from "@mui/material";
+import { Stack, Typography, Input, Alert, Link } from "@mui/material";
 import { Container } from "@mui/system";
 import { useState } from "react";
 import { useQuery } from "react-query";
@@ -81,13 +81,15 @@ const Search = () => {
                 }
               })
               .map((event) => (
-                <EventOverview
-                  key={event.id}
-                  // picture={event.attributes.picture.data.attributes.url}
-                  name={event.attributes.name}
-                  date={event.attributes.date}
-                  location={event.attributes.location}
-                />
+                <Link to={`/eventInfo/${event.id}`} underline="none">
+                  <EventOverview
+                    key={event.id}
+                    // picture={event.attributes.picture.data.attributes.url}
+                    name={event.attributes.name}
+                    date={event.attributes.date}
+                    location={event.attributes.location}
+                  />
+                </Link>
                 // <div key={event.id} className="box">
                 //   <p className="nameEvent">{event.attributes.name}</p>
                 // </div>
