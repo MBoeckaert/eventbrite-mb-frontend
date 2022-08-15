@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { backendUrl } from "../lib/functions";
 
 const theme = createTheme({
@@ -34,7 +35,7 @@ const EventOverview = (props) => {
               className="img-small"
             /> */}
             <Avatar
-              src={`${backendUrl + props.picture} `}
+              // src={`${backendUrl + props.picture} `}
               alt="event pic"
               sx={{ width: 252, height: 102 }}
               variant="square"
@@ -78,8 +79,6 @@ const EventOverview = (props) => {
                   </Grid>
                   <Grid item xs={2}>
                     <Typography variant="body3" component="span">
-                      {/* <FavoriteBorder /> */}
-                      {/* <svg data-testid="DeleteIcon"></svg> */}
                       <FavoriteBorderIcon />
                     </Typography>
                   </Grid>
