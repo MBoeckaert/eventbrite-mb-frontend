@@ -40,7 +40,7 @@ const CreateButton = styled(Button)({
 });
 
 const CreateEvent = () => {
-  const [value, setValue] = React.useState(new Date("2022-01-01"));
+  const [value, setValue] = React.useState(new Date("2022-01-01T12:00:00"));
   const handleChange = (newValue) => {
     setValue(newValue);
   };
