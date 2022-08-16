@@ -26,6 +26,8 @@ const ButtonTickets = (props) => {
         variant="contained"
         // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
         onClick={() => navigate("/orderTickets")}
+        eventName={props.name}
+        eventPrice={props.price}
       >
         Tickets
       </TicketsButton>
