@@ -4,7 +4,10 @@ import {
   Typography,
   Paper,
   Skeleton,
-  // CardMedia,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
 } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -12,11 +15,12 @@ import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumb
 // import TicketsButton from "../components/TicketsButton.js";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { backendUrl } from "../lib/functions";
 import { useQuery } from "react-query";
+import { useState } from "react";
 
-const TicketsButton = styled(Button)({
+const OrderButton = styled(Button)({
   width: "100%",
   boxShadow: "none",
   fontSize: 16,
@@ -31,7 +35,12 @@ const TicketsButton = styled(Button)({
 });
 
 const ClickedEventInformation = (props) => {
-  const navigate = useNavigate();
+  const [age, setAge] = useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
   const { id } = useParams();
 
   const { isLoading: isLoadingEventInfo, data: events } = useQuery(
@@ -131,15 +140,25 @@ const ClickedEventInformation = (props) => {
             `${events.data.attributes.description}`
           )}
         </Paper>
-        <TicketsButton
-          variant="contained"
-          // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
-          onClick={() => navigate("/orderTickets")}
-          eventName={props.name}
-        >
-          Tickets
-          {console.log(events)}
-        </TicketsButton>
+
+        <Grid container spacing={4}>
+          <FormControl fullWidth>
+            <InputLabel id="tickets-amount">Tickets</InputLabel>
+            <Select
+              labelId="tickets-amount"
+              id="tickets-amount"
+              value={age}
+              label="Tickets"
+              onChange={handleChange}
+            >
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <OrderButton>Koop Tickets</OrderButton>
       </Container>
     </>
   );
