@@ -4,7 +4,7 @@ import {
   Typography,
   Paper,
   Skeleton,
-  CardMedia,
+  // CardMedia,
 } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -114,8 +114,10 @@ const ClickedEventInformation = (props) => {
             `${events.data.attributes.description}`
           )}
         </Paper>
-
-        <TicketsButton />
+        <TicketsButton
+          name={events.attributes.name}
+          price={events.attributes.price}
+        />
       </Container>
     </>
   );

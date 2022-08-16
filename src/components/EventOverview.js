@@ -102,60 +102,6 @@ const EventOverview = (props) => {
             </Typography>
           </Grid>
         </Grid>
-        {/* <Box
-          display="grid"
-          gridTemplateColumns="repeat{ 12, 1fr}"
-          gap={2}
-          fullWidth
-        >
-          <Link to={`/eventInfo/${props.id}`} underline="none">
-            <Box gridColumn="span 8">
-              <Box>
-                <Avatar
-                  // src={`${backendUrl + props.picture} `}
-                  alt="event pic"
-                  sx={{ width: 252, height: 102 }}
-                  variant="square"
-                />
-              </Box>
-              <Box>
-                <ThemeProvider theme={theme}>
-                  <Typography
-                    variant="h6"
-                    component="h2"
-                    sx={{ color: "red", marginTop: "1rem" }}
-                  >
-                    {props.date}
-                  </Typography>
-                  <Typography variant="subtitle2" component="h3">
-                    {props.name}
-                  </Typography>
-                  <Grid item>
-                    <Typography
-                      variant="body2"
-                      component="span"
-                      sx={{ color: "Grey" }}
-                    >
-                      {props.location}
-                    </Typography>
-                  </Grid>
-                  {/* end Link here */}
-        {/* </ThemeProvider>
-              </Box>
-            </Box>
-          </Link>
-          <Box gridColumn="span 2">
-            <Typography variant="body3" component="span">
-              <ShareIcon />
-            </Typography>
-          </Box>
-          <Box gridColumn="span 2" onClick={handleClick}>
-            <Typography variant="body3" component="span">
-              {clickedButton ? <FavoriteBorderIcon /> : <FavoriteIcon />}
-              {console.log(handleClick)}
-            </Typography>
-          </Box>
-        </Box>  */}
       </Card>
     </>
   );

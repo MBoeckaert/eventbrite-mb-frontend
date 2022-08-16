@@ -1,6 +1,6 @@
 import EventOverview from "../components/EventOverview";
 import LoadingInfo from "../components/LoadingInfo";
-import { Stack, Alert, Typography, Grid, Card } from "@mui/material";
+import { Stack, Alert, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useQuery } from "react-query";
 import { backendUrl } from "../lib/functions";
@@ -97,25 +97,6 @@ const Home = () => {
                 ))}
           </Splide>
         </Stack>
-
-        <Card variant="outlined" sx={{ cursor: "pointer" }}>
-          <Grid container spacing={2}>
-            <Grid item xs={8} container>
-              <Grid item xs={6}>
-                I'm 4
-              </Grid>
-              <Grid item xs={6}>
-                I'm 4
-              </Grid>
-            </Grid>
-            <Grid item xs={2}>
-              I'm xs=2
-            </Grid>
-            <Grid item xs={2}>
-              I'm xs=2
-            </Grid>
-          </Grid>
-        </Card>
       </Container>
     </>
   );

@@ -16,10 +16,14 @@ const OrderButton = styled(Button)({
   },
 });
 
-const OrderTickets = () => {
+const OrderTickets = (props) => {
   return (
     <>
-      <h1>Order Page</h1>
+      <h1>Name Event {props.name}</h1>
+      <h3>Price Event</h3>
+      <p>dropdown Box amount</p>
+      <p>ShoppingCart</p>
+      <p>TotalPrice</p>
       <OrderButton>Bestellen</OrderButton>
     </>
   );
