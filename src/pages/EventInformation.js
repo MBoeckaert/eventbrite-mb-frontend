@@ -19,6 +19,7 @@ import { useParams } from "react-router-dom";
 import { backendUrl } from "../lib/functions";
 import { useQuery } from "react-query";
 import { useState } from "react";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const OrderButton = styled(Button)({
   width: "100%",
@@ -142,21 +143,29 @@ const ClickedEventInformation = (props) => {
         </Paper>
 
         <Grid container spacing={4}>
-          <FormControl fullWidth>
-            <InputLabel id="tickets-amount">Tickets</InputLabel>
-            <Select
-              labelId="tickets-amount"
-              id="tickets-amount"
-              value={age}
-              label="Tickets"
-              onChange={handleChange}
-            >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-            </Select>
-          </FormControl>
+          <Grid item sx={{ margin: 2 }}>
+            <FormControl>
+              <InputLabel id="tickets-amount">Tickets</InputLabel>
+              <Select
+                labelId="tickets-amount"
+                id="tickets-amount"
+                value={age}
+                label="Tickets"
+                onChange={handleChange}
+              >
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+              </Select>
+            </FormControl>{" "}
+          </Grid>
+          <Grid item>
+            <ShoppingCartOutlinedIcon />
+          </Grid>
+          <Grid item>
+            <p>TotalPrice</p>
+          </Grid>
         </Grid>
         <OrderButton>Koop Tickets</OrderButton>
       </Container>
