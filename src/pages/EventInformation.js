@@ -119,6 +119,7 @@ const ClickedEventInformation = (props) => {
             ) : (
               `${events.data.attributes.price}`
             )}
+            / Ticket
           </Grid>
         </Grid>
 
@@ -142,7 +143,11 @@ const ClickedEventInformation = (props) => {
           )}
         </Paper>
 
-        <Grid container spacing={4} sx={{ margin: 2 }}>
+        <Grid
+          container
+          spacing={4}
+          sx={{ margin: 2, display: "flex", justifyContent: "space-between" }}
+        >
           <Grid item xs={4}>
             <FormControl fullWidth>
               <InputLabel id="tickets-amount">Tickets</InputLabel>
