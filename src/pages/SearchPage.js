@@ -84,7 +84,7 @@ const Search = () => {
                 <Link to={`/eventInfo/${event.id}`} underline="none">
                   <EventOverview
                     key={event.id}
-                    id={event.attributes.id}
+                    id={event.id}
                     // picture={event.attributes.picture.data.attributes.url}
                     name={event.attributes.name}
                     date={event.attributes.date}
