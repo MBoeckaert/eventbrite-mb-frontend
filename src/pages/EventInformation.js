@@ -166,7 +166,7 @@ const ClickedEventInformation = (props) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={4} sx={{ textAlign: "end" }}>
             <p>
               Total price: €
               {isLoadingEventInfo ? (
