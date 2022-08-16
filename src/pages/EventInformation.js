@@ -36,10 +36,10 @@ const OrderButton = styled(Button)({
 });
 
 const ClickedEventInformation = (props) => {
-  const [age, setAge] = useState("");
+  const [amount, setAmount] = useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setAmount(event.target.value);
   };
 
   const { id } = useParams();
@@ -143,13 +143,16 @@ const ClickedEventInformation = (props) => {
         </Paper>
 
         <Grid container spacing={4}>
-          <Grid item sx={{ margin: 2 }}>
+          <Grid item xs={8}>
+            <ShoppingCartOutlinedIcon />
+          </Grid>
+          <Grid item sx={{ margin: 2 }} xs={4}>
             <FormControl>
               <InputLabel id="tickets-amount">Tickets</InputLabel>
               <Select
                 labelId="tickets-amount"
                 id="tickets-amount"
-                value={age}
+                value={amount}
                 label="Tickets"
                 onChange={handleChange}
               >
@@ -158,13 +161,11 @@ const ClickedEventInformation = (props) => {
                 <MenuItem value={3}>3</MenuItem>
                 <MenuItem value={4}>4</MenuItem>
               </Select>
-            </FormControl>{" "}
+            </FormControl>
           </Grid>
-          <Grid item>
-            <ShoppingCartOutlinedIcon />
-          </Grid>
-          <Grid item>
-            <p>TotalPrice</p>
+          <Grid item xs={12} sx={{ float: "right" }}>
+            <p>total price</p>
+            <p>{console.log(`${events.data.attributes.price}` * amount)}</p>
           </Grid>
         </Grid>
         <OrderButton>Koop Tickets</OrderButton>
