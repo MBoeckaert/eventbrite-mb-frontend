@@ -170,7 +170,7 @@ const CreateEvent = () => {
         />
         <CreateButton
           loading={mutation.isLoading}
-          loadingIndicator="Adding restaurant"
+          loadingIndicator="Adding event"
           type="submit"
           color="inherit"
           // component="a"
@@ -191,7 +191,7 @@ const CreateEvent = () => {
           onClose={handleCloseSnackbar}
         >
           <Alert severity="success" sx={{ width: "100%" }}>
-            Restaurant added
+            Event added
           </Alert>
         </Snackbar>
         <Snackbar
@@ -201,7 +201,7 @@ const CreateEvent = () => {
           onClose={handleCloseSnackbar}
         >
           <Alert severity="error" sx={{ width: "100%" }}>
-            Restaurant could not be added: <br />
+            Event could not be added: <br />
             {mutation.error?.message}
           </Alert>
         </Snackbar>
