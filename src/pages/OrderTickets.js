@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const OrderButton = styled(Button)({
   width: "100%",
@@ -33,7 +34,7 @@ const OrderTickets = (props) => {
     <>
       <h1>Name Event {props.name}</h1>
       <h3>Price Event</h3>
-      <Box sx={{ minWidth: 120 }}>
+      <Box sx={{ maxWidth: 120 }}>
         <FormControl fullWidth>
           <InputLabel id="tickets-amount">Tickets</InputLabel>
           <Select
@@ -50,7 +51,7 @@ const OrderTickets = (props) => {
           </Select>
         </FormControl>
       </Box>
-      <p>ShoppingCart</p>
+      <ShoppingCartOutlinedIcon />
       <p>TotalPrice</p>
       <OrderButton>Bestellen</OrderButton>
     </>
