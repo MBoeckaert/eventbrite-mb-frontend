@@ -9,12 +9,29 @@ import {
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
-import TicketsButton from "../components/TicketsButton.js";
-import { useParams } from "react-router-dom";
+// import TicketsButton from "../components/TicketsButton.js";
+import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
+import { useParams, useNavigate } from "react-router-dom";
 import { backendUrl } from "../lib/functions";
 import { useQuery } from "react-query";
 
+const TicketsButton = styled(Button)({
+  width: "100%",
+  boxShadow: "none",
+  fontSize: 16,
+  padding: "6px 12px",
+  lineHeight: 1.5,
+  backgroundColor: "#f05537",
+  "&:hover": {
+    backgroundColor: "#d13719",
+    borderColor: "#0062cc",
+    boxShadow: "none",
+  },
+});
+
 const ClickedEventInformation = (props) => {
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const { isLoading: isLoadingEventInfo, data: events } = useQuery(
@@ -115,9 +132,14 @@ const ClickedEventInformation = (props) => {
           )}
         </Paper>
         <TicketsButton
-          name={props.events.data.attributes.name}
-          price={props.events.data.attributes.price}
-        />
+          variant="contained"
+          // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
+          onClick={() => navigate("/orderTickets")}
+          eventName={props.name}
+          eventPrice={props.price}
+        >
+          Tickets
+        </TicketsButton>
       </Container>
     </>
   );
