@@ -73,12 +73,29 @@ const EventOverview = (props) => {
               </Link>
             </Grid>
           </Grid>
-          <Grid item xs={2}>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Typography variant="body3" component="span">
               <ShareIcon />
             </Typography>
           </Grid>
-          <Grid item xs={2} onClick={handleClick}>
+          <Grid
+            item
+            xs={2}
+            onClick={handleClick}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Typography variant="body3" component="span">
               {clickedButton ? <FavoriteBorderIcon /> : <FavoriteIcon />}
               {console.log(handleClick)}
