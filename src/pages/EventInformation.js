@@ -115,8 +115,8 @@ const ClickedEventInformation = (props) => {
           )}
         </Paper>
         <TicketsButton
-          name={props.events.data.attributes.name}
-          price={props.events.data.attributes.price}
+        // name={props.events.data.attributes.name}
+        // price={props.events.data.attributes.price}
         />
       </Container>
     </>
