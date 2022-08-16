@@ -55,6 +55,8 @@ const ClickedEventInformation = (props) => {
     }
   );
 
+  console.log(events.data.attributes.price);
+
   return (
     <>
       {/* {isLoadingEventInfo ? (
@@ -143,11 +145,8 @@ const ClickedEventInformation = (props) => {
         </Paper>
 
         <Grid container spacing={4}>
-          <Grid item xs={8}>
-            <ShoppingCartOutlinedIcon />
-          </Grid>
           <Grid item sx={{ margin: 2 }} xs={4}>
-            <FormControl>
+            <FormControl fullWidth>
               <InputLabel id="tickets-amount">Tickets</InputLabel>
               <Select
                 labelId="tickets-amount"
@@ -156,6 +155,7 @@ const ClickedEventInformation = (props) => {
                 label="Tickets"
                 onChange={handleChange}
               >
+                <MenuItem value={0}>0</MenuItem>
                 <MenuItem value={1}>1</MenuItem>
                 <MenuItem value={2}>2</MenuItem>
                 <MenuItem value={3}>3</MenuItem>
