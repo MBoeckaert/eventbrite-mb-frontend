@@ -138,7 +138,7 @@ const ClickedEventInformation = (props) => {
           // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
           onClick={() => navigate("/orderTickets")}
           eventName={props.name}
-          // passData={data.attributes.name}
+          passData={events.data.attributes.name}
         >
           Tickets
           {console.log(events)}

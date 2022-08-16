@@ -32,7 +32,9 @@ const OrderTickets = (props) => {
 
   return (
     <>
-      <h1>Name Event {props.eventName}</h1>
+      <h1>
+        Name Event {props.eventName} {props.passData}
+      </h1>
       <h3>Price Event</h3>
       <Box sx={{ maxWidth: 120 }}>
         <FormControl fullWidth>
