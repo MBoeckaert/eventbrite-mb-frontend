@@ -55,8 +55,6 @@ const ClickedEventInformation = (props) => {
     }
   );
 
-  console.log(`${events.data.attributes.price}`);
-
   return (
     <>
       {/* {isLoadingEventInfo ? (
@@ -164,7 +162,13 @@ const ClickedEventInformation = (props) => {
             </FormControl>
           </Grid>
           <Grid item xs={8} sx={{ float: "right" }}>
-            <p>total price</p>
+            <p>
+              {isLoadingEventInfo ? (
+                <Skeleton />
+              ) : (
+                `${events.data.attributes.price}` * amount
+              )}
+            </p>
             <p>{console.log(props.price * amount)}</p>
           </Grid>
         </Grid>
