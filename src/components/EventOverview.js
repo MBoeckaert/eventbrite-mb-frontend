@@ -36,7 +36,11 @@ const EventOverview = (props) => {
         <Grid container spacing={2}>
           <Grid item spacing={2} xs={8} container>
             <Grid item xs={6}>
-              <Link to={`/eventInfo/${props.id}`} underline="none">
+              <Link
+                to={`/eventInfo/${props.id}`}
+                underline="none"
+                name={props.name}
+              >
                 {" "}
                 <Avatar
                   // src={`${backendUrl + props.picture} `}
@@ -47,7 +51,11 @@ const EventOverview = (props) => {
               </Link>
             </Grid>
             <Grid item xs={6}>
-              <Link to={`/eventInfo/${props.id}`} underline="none">
+              <Link
+                to={`/eventInfo/${props.id}`}
+                underline="none"
+                name={props.name}
+              >
                 <ThemeProvider theme={theme}>
                   <Typography
                     variant="h6"
