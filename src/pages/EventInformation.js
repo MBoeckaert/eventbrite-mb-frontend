@@ -36,7 +36,7 @@ const OrderButton = styled(Button)({
 });
 
 const ClickedEventInformation = (props) => {
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState("0");
 
   const handleChange = (event) => {
     setAmount(event.target.value);
@@ -142,8 +142,8 @@ const ClickedEventInformation = (props) => {
           )}
         </Paper>
 
-        <Grid container spacing={4}>
-          <Grid item sx={{ margin: 2 }} xs={4}>
+        <Grid container spacing={4} sx={{ margin: 2 }}>
+          <Grid item xs={4}>
             <FormControl fullWidth>
               <InputLabel id="tickets-amount">Tickets</InputLabel>
               <Select
@@ -161,15 +161,15 @@ const ClickedEventInformation = (props) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={8} sx={{ float: "right" }}>
+          <Grid item xs={4}>
             <p>
+              Total price: €
               {isLoadingEventInfo ? (
                 <Skeleton />
               ) : (
                 `${events.data.attributes.price}` * amount
               )}
             </p>
-            <p>{console.log(props.price * amount)}</p>
           </Grid>
         </Grid>
         <OrderButton>Koop Tickets</OrderButton>
