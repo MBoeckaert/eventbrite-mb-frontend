@@ -19,7 +19,6 @@ import { useParams } from "react-router-dom";
 import { backendUrl } from "../lib/functions";
 import { useQuery } from "react-query";
 import { useState } from "react";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 const OrderButton = styled(Button)({
   width: "100%",
@@ -28,6 +27,7 @@ const OrderButton = styled(Button)({
   padding: "6px 12px",
   lineHeight: 1.5,
   backgroundColor: "#f05537",
+  color: "white",
   "&:hover": {
     backgroundColor: "#d13719",
     borderColor: "#0062cc",
@@ -55,7 +55,7 @@ const ClickedEventInformation = (props) => {
     }
   );
 
-  console.log(events.data.attributes.price);
+  console.log(`${events.data.attributes.price}`);
 
   return (
     <>
@@ -163,7 +163,7 @@ const ClickedEventInformation = (props) => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} sx={{ float: "right" }}>
+          <Grid item xs={8} sx={{ float: "right" }}>
             <p>total price</p>
             <p>{console.log(props.price * amount)}</p>
           </Grid>
