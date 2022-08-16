@@ -1,4 +1,4 @@
-import { Card, Grid, Typography, Avatar, Box } from "@mui/material";
+import { Card, Grid, Typography, Avatar } from "@mui/material";
 import { createTheme, ThemeProvider, Link } from "@mui/material";
 import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";

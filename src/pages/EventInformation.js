@@ -165,7 +165,7 @@ const ClickedEventInformation = (props) => {
           </Grid>
           <Grid item xs={12} sx={{ float: "right" }}>
             <p>total price</p>
-            <p>{console.log(`${events.data.attributes.price}` * amount)}</p>
+            <p>{console.log(props.price * amount)}</p>
           </Grid>
         </Grid>
         <OrderButton>Koop Tickets</OrderButton>

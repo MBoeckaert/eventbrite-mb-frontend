@@ -3,7 +3,6 @@ import Search from "./pages/SearchPage.js";
 import Likes from "./pages/LikesPage.js";
 import Tickets from "./pages/TicketsPage";
 import Layout from "./components/Layout.js";
-import OrderTickets from "./pages/OrderTickets.js";
 import SignUp from "./pages/SignUp.js";
 import PayTickets from "./pages/PayTickets.js";
 import LoginRedirect from "./pages/LoginRedirect";
@@ -33,7 +32,6 @@ function App() {
               path="/eventInfo/:id"
               element={<ClickedEventInformation />}
             />
-            <Route path="/orderTickets" element={<OrderTickets />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/payTickets" element={<PayTickets />} />
             <Route path="/create" element={<CreateEvent />} />
