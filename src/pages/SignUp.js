@@ -53,10 +53,13 @@ export default function SignIn() {
     error: profileError,
     data: profile,
   } = useQuery(["profile"], async () => {
-    const data = await fetch(
-      `${backendUrl}/api/profiles?${profileQuery}?populate=*`
-    ).then((r) => r.json());
-    console.log(data);
+    const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      },
+    }).then((r) => r.json());
     return data;
   });
 
