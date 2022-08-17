@@ -16,6 +16,8 @@ const linkUserToProfile = async (data) => {
   }).then((r) => r.json());
 };
 
+console.log(linkUserToProfile);
+
 const checkProfileData = async (dataUser) => {
   const qs = require("qs");
   const profileQuery = qs.stringify({

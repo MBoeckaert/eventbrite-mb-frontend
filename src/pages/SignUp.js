@@ -48,27 +48,23 @@ export default function SignIn() {
     },
   });
 
-  // const {
-  //   isLoading: profileIsLoading,
-  //   error: profileError,
-  //   data: profile,
-  // } = useQuery(["profile"], async () => {
-  //   const data = await fetch(
-  //     `${backendUrl}/api/profiles?${profileQuery}?populate=*`,
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${jwt}`,
-  //       },
-  //     }
-  //   ).then((r) => r.json());
-  //   return data;
-  // });
+  const { data: profile } = useQuery(["profile"], async () => {
+    const data = await fetch(
+      `${backendUrl}/api/profiles?${profileQuery}?populate=*`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwt}`,
+        },
+      }
+    ).then((r) => r.json());
+    return data;
+  });
 
-  // console.log(profile);
+  console.log(profile);
 
-  //fetch events from strapi
+  //fetch profiles
   const data = fetch(
     `${backendUrl}/api/profiles?${profileQuery}?populate=*`
   ).then((res) => res.json());
