@@ -8,13 +8,13 @@ const useStore = create((set) => ({
     set((state) => {
       localStorage.setItem("jwt", jwt);
       localStorage.setItem("username", username);
-      return { ...state, isLoggedIn: !!jwt, username: username };
+      return { ...state, isLoggedIn: !!jwt, username: username, jwt: jwt };
     }),
   logout: () =>
     set((state) => {
       localStorage.removeItem("jwt");
       localStorage.removeItem("username");
-      return { ...state, isLoggedIn: false, username: "" };
+      return { ...state, isLoggedIn: false, username: "", jwt: "" };
     }),
 }));
 

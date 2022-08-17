@@ -44,17 +44,17 @@ const CreateEvent = () => {
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-
+  //adding new FormData for uploading files
   const {
     handleSubmit,
     formState: { errors },
     register,
     reset,
   } = useForm({ defaultValues });
-
   const jwt = useStore((state) => state.jwt);
-
   const queryClient = useQueryClient();
+
+  //where does this get used? nowhere?
   const { isLoading, data: categories } = useQuery("categories", async () => {
     const data = await fetch(`${backendUrl}/api/categories`).then((r) =>
       r.json()
@@ -82,9 +82,11 @@ const CreateEvent = () => {
 
   const mutation = useMutation(postEvent, {
     onSuccess: () => {
+      //const creatorId = data.id
       console.log("success");
       queryClient.invalidateQueries("events");
-      reset();
+      reset(); //comment this out
+      //navigate(`/tickets/${creatorId}`);
     },
   });
 
