@@ -50,7 +50,7 @@ export default function SignIn() {
     },
   });
 
-  const { data: profileId } = useQuery("bookInfo", async () => {
+  const { data: profileId } = useQuery(["signUp", id], async () => {
     const data = await fetch(
       `${backendUrl}/api/stories?populate=*&filters[id][$eq]=${id}`
     ).then((r) => r.json());
