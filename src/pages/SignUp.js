@@ -14,7 +14,6 @@ import { styled } from "@mui/material/styles";
 import { useStore } from "../store";
 import { backendUrl } from "../lib/functions";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
 
 import GoogleIcon from "@mui/icons-material/Google";
 
@@ -39,7 +38,6 @@ export default function SignIn() {
   const logout = useStore((state) => state.logout);
   const username = useStore((state) => state.username);
   const jwt = useStore((state) => state.jwt);
-  const { id } = useParams();
 
   const qs = require("qs");
   const profileQuery = qs.stringify({
@@ -49,15 +47,6 @@ export default function SignIn() {
       },
     },
   });
-
-  const { data: profileId } = useQuery(["signUp", id], async () => {
-    const data = await fetch(
-      `${backendUrl}/api/stories?populate=*&filters[id][$eq]=${id}`
-    ).then((r) => r.json());
-    return data;
-  });
-
-  console.log(profileId);
 
   const { data: profile } = useQuery(["profile"], async () => {
     const data = await fetch(
