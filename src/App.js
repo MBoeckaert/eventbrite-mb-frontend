@@ -32,7 +32,7 @@ function App() {
               path="/eventInfo/:id"
               element={<ClickedEventInformation />}
             />
-            <Route path="/signUp:userId" element={<SignUp />} />
+            <Route path="/signUp" element={<SignUp />} />
             <Route path="/payTickets" element={<PayTickets />} />
             <Route path="/create" element={<CreateEvent />} />
           </Route>
