@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { styled } from "@mui/material/styles";
 import { useStore } from "../store";
 import { backendUrl } from "../lib/functions";
+import { useQuery } from "react-query";
 
 import GoogleIcon from "@mui/icons-material/Google";
 
@@ -34,8 +35,34 @@ const theme = createTheme();
 
 export default function SignIn() {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
-  const username = useStore((state) => state.username);
   const logout = useStore((state) => state.logout);
+  const username = useStore((state) => state.username);
+  const jwt = useStore((state) => state.jwt);
+
+  const qs = require("qs");
+  const profileQuery = qs.stringify({
+    filters: {
+      username: {
+        $eq: username,
+      },
+    },
+  });
+  const {
+    isLoading: profileIsLoading,
+    error: profileError,
+    data: profile,
+  } = useQuery(["profile"], async () => {
+    const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      },
+    }).then((r) => r.json());
+    return data;
+  });
+
+  console.log(profile);
 
   const handleSubmit = (event) => {
     event.preventDefault();
