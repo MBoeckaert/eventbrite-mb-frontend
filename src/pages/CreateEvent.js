@@ -13,9 +13,9 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { backendUrl } from "../lib/functions";
 import { useForm } from "react-hook-form";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useStore } from "../store";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import { styled } from "@mui/material/styles";
 // import { useState } from "react";
@@ -41,7 +41,7 @@ const CreateButton = styled(Button)({
 });
 
 const CreateEvent = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [value, setValue] = React.useState(new Date("2022-01-01T12:00:00"));
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -55,14 +55,6 @@ const CreateEvent = () => {
   } = useForm({ defaultValues });
   const jwt = useStore((state) => state.jwt);
   const queryClient = useQueryClient();
-
-  //where does this get used? nowhere?
-  const { isLoading, data: categories } = useQuery("categories", async () => {
-    const data = await fetch(`${backendUrl}/api/categories`).then((r) =>
-      r.json()
-    );
-    return data;
-  });
 
   const postEvent = async (data) => {
     return await fetch(`${backendUrl}/api/events`, {
