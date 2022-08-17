@@ -74,9 +74,6 @@ const CreateEvent = () => {
     // });
   };
 
-  const response = await fetch(`${backendUrl}/api/profiles?${profileQuery}?populate=*`);
-  console.log(response);
-
   const mutation = useMutation(postEvent, {
     onSuccess: (data) => {
       // const creatorId = data.id;
