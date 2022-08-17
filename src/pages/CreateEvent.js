@@ -34,6 +34,10 @@ const CreateButton = styled(Button)({
   },
 });
 
+const Input = styled("input")({
+  display: "none",
+});
+
 const defaultValues = {
   name: "",
   location: "",
@@ -53,6 +57,7 @@ const CreateEvent = () => {
     formState: { errors },
     register,
     reset,
+    watch,
   } = useForm({ defaultValues });
   const jwt = useStore((state) => state.jwt);
   const queryClient = useQueryClient();
@@ -138,11 +143,34 @@ const CreateEvent = () => {
             required: "Price is required",
           })}
         />
-        <Typography>Create A File Upload here</Typography>
+        {/* <Typography>Upload Event Image</Typography>
         <Button variant="contained" component="label">
-          Upload Event Image
-          <input type="file" hidden />
-        </Button>
+          Upload
+          <input hidden accept="image/*" type="file" />
+        </Button> */}
+
+        <Stack direction="row" spacing={2} alignItems="center">
+          <label htmlFor="contained-button-file">
+            <Input
+              accept="image/*"
+              id="contained-button-file"
+              type="file"
+              {...register("image")}
+            />
+            <Button
+              variant="contained"
+              component="span"
+              disabled={mutation.isLoading}
+            >
+              Select photo
+            </Button>
+          </label>
+          <Typography>
+            {watch("image") &&
+              watch("image").length > 0 &&
+              watch("image")[0].name}
+          </Typography>
+        </Stack>
         <TextField
           id="description"
           label="Event Description"
