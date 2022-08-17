@@ -38,6 +38,7 @@ export default function SignIn() {
   const logout = useStore((state) => state.logout);
   const username = useStore((state) => state.username);
   const jwt = useStore((state) => state.jwt);
+  const events = useStore((state) => state.events);
 
   const qs = require("qs");
   const profileQuery = qs.stringify({
