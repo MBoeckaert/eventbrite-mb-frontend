@@ -15,7 +15,7 @@ const linkUserToProfile = async (data) => {
     body: JSON.stringify(data),
   }).then((r) => r.json());
 };
-
+//logged in user is in here
 console.log(linkUserToProfile);
 
 const checkProfileData = async (dataUser) => {
@@ -36,7 +36,6 @@ const checkProfileData = async (dataUser) => {
     const data = {
       username: dataUser.username,
       user_id: dataUser.id.toString(),
-      events: dataUser.events,
     };
     return data;
   } else {
