@@ -29,6 +29,7 @@ const checkProfileData = async (dataUser) => {
 
   const response = await fetch(`${backendUrl}/api/profiles?${profileQuery}`);
   const res = await response.json();
+  console.log(res);
   //if not found (length = 0), add the user to profile
   if (res.data.length === 0) {
     const data = {
