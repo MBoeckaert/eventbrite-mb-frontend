@@ -1,8 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { useStore } from "../store";
+import { useMutation } from "react-query";
+import { backendUrl } from "../lib/functions";
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+//add a profilelink
+const linkUserToProfile = async (data) => {
+  return await fetch(`${backendUrl}/api/profiles`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+    body: JSON.stringify(data),
+  }).then((r) => r.json());
+};
+
+//check if username is already in profile
+const checkProfileData = async (dataUser) => {
+  const qs = require("qs");
+  const profileQuery = qs.stringify({
+    filters: {
+      username: {
+        $eq: dataUser.username,
+      },
+    },
+  });
+
+  const response = await fetch(`${backendUrl}/api/profiles?${profileQuery}`);
+  const res = await response.json();
+  //if not found (length = 0), add the user to profile
+  if (res.data.length === 0) {
+    const data = {
+      username: dataUser.username,
+      user_id: dataUser.id.toString(),
+    };
+    return data;
+  } else {
+    return false;
+  }
+};
 
 const LoginRedirect = (props) => {
   const setLoggedIn = useStore((state) => state.setLoggedIn);
@@ -10,6 +47,15 @@ const LoginRedirect = (props) => {
   const location = useLocation();
   const params = useParams();
   const navigate = useNavigate();
+
+  const profileMutation = useMutation(linkUserToProfile, {
+    onSuccess: (data) => {
+      setTimeout(() => navigate("/"), 1000);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 
   useEffect(() => {
     // Successfully logged with the provider
@@ -31,13 +77,26 @@ const LoginRedirect = (props) => {
         setText(
           "You have been successfully logged in. You will be redirected in a few seconds..."
         );
-        setTimeout(() => navigate("/"), 1000); // Redirect to homepage after 3 sec
+        return checkProfileData(res.user);
+      })
+      .then((data) => {
+        if (data) {
+          profileMutation.mutate({ data });
+        } else {
+          navigate("/signUp");
+        }
       })
       .catch((err) => {
         console.log(err);
         setText("An error occurred, please see the developer console.");
       });
-  }, [navigate, location.search, params.providerName, setLoggedIn]);
+  }, [
+    navigate,
+    location.search,
+    params.providerName,
+    setLoggedIn,
+    profileMutation,
+  ]);
 
   return <p>{text}</p>;
 };
