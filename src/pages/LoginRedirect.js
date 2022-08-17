@@ -16,7 +16,6 @@ const linkUserToProfile = async (data) => {
   }).then((r) => r.json());
 };
 
-//check if username is already in profile
 const checkProfileData = async (dataUser) => {
   const qs = require("qs");
   const profileQuery = qs.stringify({
@@ -51,7 +50,7 @@ const LoginRedirect = (props) => {
 
   const profileMutation = useMutation(linkUserToProfile, {
     onSuccess: (data) => {
-      setTimeout(() => navigate("/"), 1000);
+      setTimeout(() => navigate("/signUp"), 1000);
     },
     onError: (error) => {
       console.log(error);
@@ -84,7 +83,7 @@ const LoginRedirect = (props) => {
         if (data) {
           profileMutation.mutate({ data });
         } else {
-          navigate("/");
+          navigate("/signUp");
         }
       })
       .catch((err) => {

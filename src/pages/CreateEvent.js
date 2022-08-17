@@ -84,11 +84,11 @@ const CreateEvent = () => {
 
   const mutation = useMutation(postEvent, {
     onSuccess: (data) => {
-      const creatorId = data.id;
+      // const creatorId = data.id;
       console.log("success");
       queryClient.invalidateQueries("events");
       reset(); //comment this out
-      navigate(`/signUp/${creatorId}`);
+      // navigate(`/signUp/${creatorId}`);
     },
   });
 
