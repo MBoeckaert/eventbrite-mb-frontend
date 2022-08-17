@@ -54,15 +54,9 @@ export default function SignIn() {
     data: profile,
   } = useQuery(["profile"], async () => {
     const data = await fetch(
-      `${backendUrl}/api/profiles?${profileQuery}?populate=*`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${jwt}`,
-        },
-      }
+      `${backendUrl}/api/profiles?${profileQuery}?populate=*`
     ).then((r) => r.json());
+    console.log(data);
     return data;
   });
 
