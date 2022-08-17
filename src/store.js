@@ -4,6 +4,7 @@ const useStore = create((set) => ({
   jwt: localStorage.getItem("jwt"),
   isLoggedIn: !!localStorage.getItem("jwt"),
   username: localStorage.getItem("username"),
+  events: localStorage.getItem("events"),
   setLoggedIn: (jwt, username) =>
     set((state) => {
       localStorage.setItem("jwt", jwt);

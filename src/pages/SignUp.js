@@ -45,6 +45,9 @@ export default function SignIn() {
       username: {
         $eq: username,
       },
+      events: {
+        $eq: events,
+      },
     },
   });
   const {
@@ -59,10 +62,11 @@ export default function SignIn() {
         Authorization: `Bearer ${jwt}`,
       },
     }).then((r) => r.json());
+
+    console.log(data);
+
     return data;
   });
-
-  console.log(profile);
 
   const handleSubmit = (event) => {
     event.preventDefault();
