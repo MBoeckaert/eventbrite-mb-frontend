@@ -20,13 +20,6 @@ import { useStore } from "../store";
 import { styled } from "@mui/material/styles";
 // import { useState } from "react";
 
-const defaultValues = {
-  name: "",
-  location: "",
-  price: "",
-  description: "",
-};
-
 const CreateButton = styled(Button)({
   width: "100%",
   boxShadow: "none",
@@ -41,13 +34,20 @@ const CreateButton = styled(Button)({
   },
 });
 
+const defaultValues = {
+  name: "",
+  location: "",
+  price: "",
+  description: "",
+};
+
 const CreateEvent = () => {
   // const navigate = useNavigate();
   const [value, setValue] = React.useState(new Date("2022-01-01T12:00:00"));
   const handleChange = (newValue) => {
     setValue(newValue);
   };
-  //adding new FormData for uploading files
+  //still need to add new FormData for uploading files
   const {
     handleSubmit,
     formState: { errors },
@@ -66,21 +66,12 @@ const CreateEvent = () => {
       },
       body: JSON.stringify(data),
     }).then((r) => r.json());
-    // .then((data) => {
-    //   if (data.error) {
-    //     throw data.error;
-    //   }
-    //   return data;
-    // });
   };
 
   const mutation = useMutation(postEvent, {
     onSuccess: (data) => {
-      // const creatorId = data.id;
-      console.log("success");
       queryClient.invalidateQueries("events");
-      reset(); //comment this out
-      // navigate(`/signUp/${creatorId}`);
+      reset();
     },
   });
 
