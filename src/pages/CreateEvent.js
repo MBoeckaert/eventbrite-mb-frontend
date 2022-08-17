@@ -21,8 +21,9 @@ import { styled } from "@mui/material/styles";
 // import { useState } from "react";
 
 const defaultValues = {
-  categories: [],
   name: "",
+  location: "",
+  price: "",
   description: "",
 };
 
