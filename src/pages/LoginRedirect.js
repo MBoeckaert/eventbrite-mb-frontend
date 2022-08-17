@@ -83,7 +83,7 @@ const LoginRedirect = (props) => {
         if (data) {
           profileMutation.mutate({ data });
         } else {
-          navigate("/signUp");
+          navigate("/");
         }
       })
       .catch((err) => {
