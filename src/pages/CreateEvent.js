@@ -74,6 +74,8 @@ const CreateEvent = () => {
     // });
   };
 
+  console.log(postEvent);
+
   const mutation = useMutation(postEvent, {
     onSuccess: (data) => {
       // const creatorId = data.id;

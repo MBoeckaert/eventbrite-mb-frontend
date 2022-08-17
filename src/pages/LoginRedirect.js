@@ -16,7 +16,7 @@ const linkUserToProfile = async (data) => {
   }).then((r) => r.json());
 };
 //logged in user is in here
-console.log(linkUserToProfile);
+// console.log(linkUserToProfile);
 
 const checkProfileData = async (dataUser) => {
   const qs = require("qs");
