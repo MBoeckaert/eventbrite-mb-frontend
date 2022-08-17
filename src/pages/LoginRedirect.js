@@ -34,6 +34,7 @@ const checkProfileData = async (dataUser) => {
     const data = {
       username: dataUser.username,
       user_id: dataUser.id.toString(),
+      events: dataUser.events,
     };
     return data;
   } else {

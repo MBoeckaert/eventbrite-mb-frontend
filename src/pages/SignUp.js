@@ -14,7 +14,6 @@ import { styled } from "@mui/material/styles";
 import { useStore } from "../store";
 import { backendUrl } from "../lib/functions";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
 
 import GoogleIcon from "@mui/icons-material/Google";
 
@@ -39,7 +38,6 @@ export default function SignIn() {
   const logout = useStore((state) => state.logout);
   const username = useStore((state) => state.username);
   const jwt = useStore((state) => state.jwt);
-  const { events } = useParams();
 
   const qs = require("qs");
   const profileQuery = qs.stringify({
@@ -49,6 +47,7 @@ export default function SignIn() {
       },
     },
   });
+
   const {
     isLoading: profileIsLoading,
     error: profileError,
@@ -66,14 +65,14 @@ export default function SignIn() {
 
   console.log(profile);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get("email"),
+      password: data.get("password"),
+    });
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -95,7 +94,7 @@ export default function SignIn() {
             </Typography>
             <Box
               component="form"
-              // onSubmit={handleSubmit}
+              onSubmit={handleSubmit}
               noValidate
               sx={{ mt: 1 }}
             >
