@@ -46,6 +46,8 @@ export default function SignIn() {
       username: {
         $eq: username,
       },
+    },
+    filters: {
       events: {
         $eq: events,
       },

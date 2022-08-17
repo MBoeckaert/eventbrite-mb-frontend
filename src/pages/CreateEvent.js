@@ -15,6 +15,7 @@ import { backendUrl } from "../lib/functions";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useStore } from "../store";
+import { useNavigate } from "react-router-dom";
 
 import { styled } from "@mui/material/styles";
 // import { useState } from "react";
@@ -40,6 +41,7 @@ const CreateButton = styled(Button)({
 });
 
 const CreateEvent = () => {
+  const navigate = useNavigate();
   const [value, setValue] = React.useState(new Date("2022-01-01T12:00:00"));
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -81,12 +83,12 @@ const CreateEvent = () => {
   };
 
   const mutation = useMutation(postEvent, {
-    onSuccess: () => {
-      //const creatorId = data.id
+    onSuccess: (data) => {
+      const creatorId = data.id;
       console.log("success");
       queryClient.invalidateQueries("events");
       reset(); //comment this out
-      //navigate(`/tickets/${creatorId}`);
+      navigate(`/signUp/${creatorId}`);
     },
   });
 
