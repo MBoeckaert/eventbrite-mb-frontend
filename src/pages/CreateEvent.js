@@ -13,7 +13,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { backendUrl } from "../lib/functions";
 import { useForm } from "react-hook-form";
-import { usecreateMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useStore } from "../store";
 import { useNavigate } from "react-router-dom";
 // import LoadingInfo from "../components/LoadingInfo";
@@ -109,7 +109,7 @@ const CreateEvent = () => {
     }).then((r) => r.json());
   };
 
-  const createMutation = usecreateMutation(postEvent, {
+  const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
       const createdId = data.id;
       queryClient.invalidateQueries("events");
