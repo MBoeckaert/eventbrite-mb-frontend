@@ -5,12 +5,54 @@ import { backendUrl } from "../lib/functions";
 import InlogButton from "../components/InlogButton";
 import EventButton from "../components/EventButton";
 
+import { useStore } from "../store";
+import { useQuery } from "react-query";
+
 const Tickets = () => {
   //fetch events from strapi
   const data = fetch(`${backendUrl}/api/events?populate=*`).then((res) =>
     res.json()
   );
   console.log(data);
+
+  //fetch profiles
+  const jwt = useStore((state) => state.jwt);
+  const username = useStore((state) => state.username);
+  const qs = require("qs");
+  const profileQuery = qs.stringify({
+    filters: {
+      username: {
+        $eq: username,
+      },
+    },
+  });
+
+  const {
+    isLoading: profileLoading,
+    error: profileError,
+    data: profile,
+  } = useQuery(["profile"], async () => {
+    const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      },
+    }).then((r) => r.json());
+    return data;
+  });
+
+  console.log(profile);
+  // const {
+  //   isLoading: setLoading,
+  //   error: setError,
+  //   data: set,
+  // } = useQuery(["set", setId], async () => {
+  //   const data = await fetch(
+  //     `${backendUrl}/api/sets/${setId}?populate=*&_limit=-1`
+  //   ).then((r) => r.json());
+  //   return data.data.attributes;
+  // });
 
   return (
     <>
