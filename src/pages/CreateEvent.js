@@ -125,6 +125,7 @@ const CreateEvent = () => {
   const handleSaveEvent = async () => {
     const eventData = getEventValues();
     eventData.profile = profile.data[0].id;
+    console.log(eventData.profile);
     const extendedData = {
       event: eventData, //remove data
     };
