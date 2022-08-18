@@ -9,10 +9,10 @@ import LoginRedirect from "./pages/LoginRedirect";
 import { Container } from "@mui/system";
 import ClickedEventInformation from "./pages/EventInformation.js";
 import CreateEvent from "./pages/CreateEvent.js";
+import ConfirmedPay from "./pages/ConfirmedPay.js";
+import CancelPay from "./pages/CancelPay.js";
 
 import { Routes, Route } from "react-router-dom";
-import ConfirmedPay from "./pages/confirmedPay.js";
-import CancelPay from "./pages/cancelPay.js";
 
 function App() {
   return (
