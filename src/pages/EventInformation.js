@@ -178,6 +178,15 @@ const ClickedEventInformation = (props) => {
           </Grid>
         </Grid>
         <OrderButton>Koop Tickets</OrderButton>
+        <Button
+          class="css style"
+          type="button"
+          data-id="1"
+          data-url="https://eventbrite-matthias.herokuapp.com"
+        >
+          {" "}
+          Koop Tickets{" "}
+        </Button>
       </Container>
     </>
   );

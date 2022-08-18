@@ -11,6 +11,8 @@ import ClickedEventInformation from "./pages/EventInformation.js";
 import CreateEvent from "./pages/CreateEvent.js";
 
 import { Routes, Route } from "react-router-dom";
+import ConfirmedPay from "./pages/confirmedPay.js";
+import CancelPay from "./pages/cancelPay.js";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
             <Route path="/signUp/" element={<SignUp />} />
             <Route path="/payTickets" element={<PayTickets />} />
             <Route path="/create" element={<CreateEvent />} />
+            <Route path="/confirmedPay" element={<ConfirmedPay />} />
+            <Route path="/cancelPay" element={<CancelPay />} />
           </Route>
         </Routes>
       </Container>
