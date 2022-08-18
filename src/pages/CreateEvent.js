@@ -57,6 +57,8 @@ const CreateEvent = () => {
   const username = useStore((state) => state.username);
   const queryClient = useQueryClient();
 
+  console.log(jwt);
+
   const qs = require("qs");
   const profileQuery = qs.stringify({
     filters: {
