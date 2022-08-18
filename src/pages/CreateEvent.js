@@ -69,7 +69,6 @@ const CreateEvent = () => {
     // isLoading: profileLoading,
     // error: profileError,
     data: profile,
-    refetch,
   } = useQuery(["profile"], async () => {
     const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
       method: "GET",
@@ -86,7 +85,7 @@ const CreateEvent = () => {
     handleSubmit,
     formState: { errors },
     register,
-    reset,
+    // reset,
     watch,
     getValues: getEventValues,
   } = useForm({ defaultValues });
@@ -115,26 +114,13 @@ const CreateEvent = () => {
   const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
       // const createdId = data.id;
-      // console.log(createdId);
-      refetch();
+      console.log(data);
       queryClient.invalidateQueries("events");
-      reset();
     },
     onError: (error) => {
       console.log(error);
     },
   });
-
-  // const createMutation = usecreateMutation(postEvent, {
-  //   onSuccess: (data) => {
-  //     queryClient.invalidateQueries("events");
-  //     reset();
-  //   },
-  // });
-
-  // const onSubmit = (data) => {
-  //   createMutation.mutate({ data });
-  // };
 
   const handleSaveEvent = async () => {
     const eventData = getEventValues();
