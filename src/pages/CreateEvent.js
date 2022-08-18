@@ -55,10 +55,6 @@ const CreateEvent = () => {
 
   const jwt = useStore((state) => state.jwt);
   const username = useStore((state) => state.username);
-  const queryClient = useQueryClient();
-
-  console.log(jwt);
-  console.log(username);
 
   const qs = require("qs");
   const profileQuery = qs.stringify({
@@ -83,7 +79,6 @@ const CreateEvent = () => {
     }).then((r) => r.json());
     return data;
   });
-
   console.log(profile);
 
   const {
@@ -94,6 +89,8 @@ const CreateEvent = () => {
     watch,
     getValues: getEventValues,
   } = useForm({ defaultValues });
+
+  const queryClient = useQueryClient();
 
   const postEvent = async (data) => {
     //still need to add new FormData for uploading files
@@ -137,10 +134,10 @@ const CreateEvent = () => {
   // };
 
   const handleSaveEvent = async () => {
-    const setData = getEventValues();
-    setData.profile = profile.data[0].id;
+    const eventData = getEventValues();
+    eventData.profile = profile.data[0].id;
     const extendedData = {
-      set: { data: setData },
+      event: { data: eventData },
     };
     createMutation.mutate(extendedData);
   };
