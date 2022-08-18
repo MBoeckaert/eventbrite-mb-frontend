@@ -92,12 +92,12 @@ const CreateEvent = () => {
 
   const postEvent = async (data) => {
     //still need to add new FormData for uploading files
-    const formData = new FormData();
+    // const formData = new FormData();
 
-    if (data.image.length > 0) {
-      formData.append("files.cover", data.image[0], data.image[0].name);
-    }
-    formData.append("data", JSON.stringify({ ...data, image: null }));
+    // if (data.image.length > 0) {
+    //   formData.append("files.cover", data.image[0], data.image[0].name);
+    // }
+    // formData.append("data", JSON.stringify({ ...data, image: null }));
 
     return await fetch(`${backendUrl}/api/events`, {
       method: "POST",
