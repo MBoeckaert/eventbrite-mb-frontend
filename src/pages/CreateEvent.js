@@ -13,9 +13,10 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { backendUrl } from "../lib/functions";
 import { useForm } from "react-hook-form";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { usecreateMutation, useQuery, useQueryClient } from "react-query";
 import { useStore } from "../store";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import LoadingInfo from "../components/LoadingInfo";
 
 import { styled } from "@mui/material/styles";
 // import { useState } from "react";
@@ -46,7 +47,7 @@ const defaultValues = {
 };
 
 const CreateEvent = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [value, setValue] = React.useState(new Date("2022-01-01T12:00:00"));
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -66,8 +67,8 @@ const CreateEvent = () => {
   });
 
   const {
-    isLoading: profileLoading,
-    error: profileError,
+    // isLoading: profileLoading,
+    // error: profileError,
     data: profile,
   } = useQuery(["profile"], async () => {
     const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
@@ -84,7 +85,7 @@ const CreateEvent = () => {
     handleSubmit,
     formState: { errors },
     register,
-    reset,
+    // reset,
     watch,
     getValues: getEventValues,
   } = useForm({ defaultValues });
@@ -108,24 +109,39 @@ const CreateEvent = () => {
     }).then((r) => r.json());
   };
 
-  const mutation = useMutation(postEvent, {
+  const createMutation = usecreateMutation(postEvent, {
     onSuccess: (data) => {
+      const createdId = data.id;
       queryClient.invalidateQueries("events");
-      reset();
+      navigate(`/signUp/${createdId}`);
+    },
+    onError: (error) => {
+      console.log(error);
     },
   });
 
-  const onSubmit = (data) => {
-    mutation.mutate({ data });
-  };
+  // const createMutation = usecreateMutation(postEvent, {
+  //   onSuccess: (data) => {
+  //     queryClient.invalidateQueries("events");
+  //     reset();
+  //   },
+  // });
+
+  // const onSubmit = (data) => {
+  //   createMutation.mutate({ data });
+  // };
 
   const handleSaveEvent = async () => {
     const setData = getEventValues();
     setData.profile = profile.data[0].id;
+    const extendedData = {
+      set: { data: setData },
+    };
+    createMutation.mutate(extendedData);
   };
 
   const handleCloseSnackbar = () => {
-    mutation.reset();
+    createMutation.reset();
   };
 
   return (
@@ -138,7 +154,7 @@ const CreateEvent = () => {
         Create your Event!
       </Typography>
 
-      <Stack spacing={4} as="form" noValidate onSubmit={handleSubmit(onSubmit)}>
+      <Stack spacing={4} as="form" noValidate onSubmit={handleSubmit()}>
         <TextField
           id="name"
           label="Name"
@@ -200,7 +216,7 @@ const CreateEvent = () => {
             <Button
               variant="contained"
               component="span"
-              disabled={mutation.isLoading}
+              disabled={createMutation.isLoading}
             >
               Select photo
             </Button>
@@ -224,7 +240,7 @@ const CreateEvent = () => {
           })}
         />
         <CreateButton
-          loading={mutation.isLoading}
+          loading={createMutation.isLoading}
           loadingIndicator="Adding event"
           type="submit"
           color="inherit"
@@ -243,7 +259,7 @@ const CreateEvent = () => {
           Create Event
         </CreateButton>
         <Snackbar
-          open={mutation.isSuccess}
+          open={createMutation.isSuccess}
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           autoHideDuration={3000}
           onClose={handleCloseSnackbar}
@@ -253,14 +269,14 @@ const CreateEvent = () => {
           </Alert>
         </Snackbar>
         <Snackbar
-          open={mutation.isError}
+          open={createMutation.isError}
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           autoHideDuration={3000}
           onClose={handleCloseSnackbar}
         >
           <Alert severity="error" sx={{ width: "100%" }}>
             Event could not be added: <br />
-            {mutation.error?.message}
+            {createMutation.error?.message}
           </Alert>
         </Snackbar>
       </Stack>
