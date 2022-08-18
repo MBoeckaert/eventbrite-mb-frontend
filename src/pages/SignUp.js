@@ -63,10 +63,10 @@ export default function SignIn() {
   });
 
   //fetch profiles
-  const data = fetch(
-    `${backendUrl}/api/profiles?${profileQuery}?populate=*`
-  ).then((res) => res.json());
-  console.log(data);
+  // const data = fetch(
+  //   `${backendUrl}/api/profiles?${profileQuery}?populate=*`
+  // ).then((res) => res.json());
+  // console.log(data);
 
   const handleSubmit = (event) => {
     event.preventDefault();
