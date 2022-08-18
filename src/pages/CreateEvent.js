@@ -114,6 +114,7 @@ const CreateEvent = () => {
   const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
       const createdId = data.id;
+      queryClient.invalidateQueries("events");
       navigate(`/signUp/${createdId}`);
     },
     onError: (error) => {
@@ -136,7 +137,7 @@ const CreateEvent = () => {
     const eventData = getEventValues();
     eventData.profile = profile.data[0].id;
     const extendedData = {
-      event: { data: eventData }, //remove data
+      event: eventData, //remove data
     };
     createMutation.mutate(extendedData);
   };

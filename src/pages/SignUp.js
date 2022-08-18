@@ -62,8 +62,6 @@ export default function SignIn() {
     return data;
   });
 
-  console.log(profile);
-
   //fetch profiles
   const data = fetch(
     `${backendUrl}/api/profiles?${profileQuery}?populate=*`
@@ -73,10 +71,10 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    // console.log({
+    //   email: data.get("email"),
+    //   password: data.get("password"),
+    // });
   };
 
   return (
