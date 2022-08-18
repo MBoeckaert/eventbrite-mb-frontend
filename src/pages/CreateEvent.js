@@ -13,7 +13,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { backendUrl } from "../lib/functions";
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useStore } from "../store";
 // import { useNavigate } from "react-router-dom";
 
@@ -52,15 +52,42 @@ const CreateEvent = () => {
     setValue(newValue);
   };
 
+  const jwt = useStore((state) => state.jwt);
+  const username = useStore((state) => state.username);
+  const queryClient = useQueryClient();
+
+  const qs = require("qs");
+  const profileQuery = qs.stringify({
+    filters: {
+      username: {
+        $eq: username,
+      },
+    },
+  });
+
+  const {
+    isLoading: profileLoading,
+    error: profileError,
+    data: profile,
+  } = useQuery(["profile"], async () => {
+    const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      },
+    }).then((r) => r.json());
+    return data;
+  });
+
   const {
     handleSubmit,
     formState: { errors },
     register,
     reset,
     watch,
+    getValues: getEventValues,
   } = useForm({ defaultValues });
-  const jwt = useStore((state) => state.jwt);
-  const queryClient = useQueryClient();
 
   const postEvent = async (data) => {
     //still need to add new FormData for uploading files
@@ -90,6 +117,11 @@ const CreateEvent = () => {
 
   const onSubmit = (data) => {
     mutation.mutate({ data });
+  };
+
+  const handleSaveEvent = async () => {
+    const setData = getEventValues();
+    setData.profile = profile.data[0].id;
   };
 
   const handleCloseSnackbar = () => {
@@ -203,6 +235,9 @@ const CreateEvent = () => {
             mb: 2,
             borderColor: "#f05537",
             color: "#ffffff",
+          }}
+          onClick={() => {
+            handleSaveEvent();
           }}
         >
           Create Event
