@@ -58,6 +58,7 @@ const CreateEvent = () => {
   const queryClient = useQueryClient();
 
   console.log(jwt);
+  console.log(username);
 
   const qs = require("qs");
   const profileQuery = qs.stringify({
@@ -82,6 +83,8 @@ const CreateEvent = () => {
     }).then((r) => r.json());
     return data;
   });
+
+  console.log(profile);
 
   const {
     handleSubmit,
