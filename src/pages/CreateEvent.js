@@ -113,10 +113,10 @@ const CreateEvent = () => {
 
   const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
-      const createdId = data.id;
-      console.log(createdId);
+      // const createdId = data.id;
+      // console.log(createdId);
       queryClient.invalidateQueries("events");
-      navigate(`/signUp/${createdId}`);
+      navigate(`/signUp/`);
     },
     onError: (error) => {
       console.log(error);
