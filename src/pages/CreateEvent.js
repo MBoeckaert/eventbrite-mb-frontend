@@ -15,7 +15,7 @@ import { backendUrl } from "../lib/functions";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useStore } from "../store";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // import LoadingInfo from "../components/LoadingInfo";
 
 import { styled } from "@mui/material/styles";
@@ -47,7 +47,7 @@ const defaultValues = {
 };
 
 const CreateEvent = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [value, setValue] = React.useState(new Date("2022-01-01T12:00:00"));
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -69,6 +69,7 @@ const CreateEvent = () => {
     // isLoading: profileLoading,
     // error: profileError,
     data: profile,
+    refetch,
   } = useQuery(["profile"], async () => {
     const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
       method: "GET",
@@ -85,7 +86,7 @@ const CreateEvent = () => {
     handleSubmit,
     formState: { errors },
     register,
-    // reset,
+    reset,
     watch,
     getValues: getEventValues,
   } = useForm({ defaultValues });
@@ -115,8 +116,9 @@ const CreateEvent = () => {
     onSuccess: (data) => {
       // const createdId = data.id;
       // console.log(createdId);
+      refetch();
       queryClient.invalidateQueries("events");
-      navigate(`/signUp/`);
+      reset();
     },
     onError: (error) => {
       console.log(error);
