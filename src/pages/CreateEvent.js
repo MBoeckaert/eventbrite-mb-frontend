@@ -102,7 +102,7 @@ const CreateEvent = () => {
       formData.append("files.cover", data.image[0], data.image[0].name);
     }
     formData.append("data", JSON.stringify({ ...data, image: null }));
-    // parseInt(data.price);
+    parseInt(data.price);
 
     return await fetch(`${backendUrl}/api/events`, {
       method: "POST",
@@ -121,7 +121,7 @@ const CreateEvent = () => {
   };
 
   console.log(postEvent());
-  console.log(postEvent);
+  console.log(postEvent());
 
   const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
