@@ -92,7 +92,7 @@ const CreateEvent = () => {
 
   const queryClient = useQueryClient();
 
-  const postEvent = async (data) => {
+  const postEvent = async (data, e) => {
     //still need to add new FormData for uploading files
     // const formData = new FormData();
 
