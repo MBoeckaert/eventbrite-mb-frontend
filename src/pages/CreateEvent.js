@@ -95,13 +95,13 @@ const CreateEvent = () => {
   const queryClient = useQueryClient();
 
   const postEvent = async (data) => {
-    // const formData = new FormData();
-    // if (data.image.length > 0) {
-    //   //tried a lot with data.event.image.length
-    //   formData.append("files.cover", data.image[0], data.image[0].name);
-    // }
-    // formData.append("data", JSON.stringify({ ...data, image: null }));
-    // parseInt(data.price);
+    const formData = new FormData();
+    if (data.image.length > 0) {
+      //tried a lot with data.event.image.length
+      formData.append("files.cover", data.image[0], data.image[0].name);
+    }
+    formData.append("data", JSON.stringify({ ...data, image: null }));
+    parseInt(data.price);
 
     return await fetch(`${backendUrl}/api/events`, {
       method: "POST",
@@ -109,7 +109,7 @@ const CreateEvent = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
-      body: JSON.stringify({ data }), // missing "data" payload in the request body ERROR
+      body: { formData }, //JSON.stringify({ data }), // missing "data" payload in the request body ERROR
     }).then((r) => r.json());
   };
 
