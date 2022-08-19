@@ -135,8 +135,12 @@ const CreateEvent = () => {
   //   createMutation.mutate(extendedData);
   // };
 
-  const handleSaveEvent = (data) => {
-    createMutation.mutate(data);
+  const handleSaveEvent = () => {
+    const eventData = getEventValues();
+    eventData.profile = profile.data[0].id;
+    console.log(eventData.profile);
+    console.log(eventData);
+    createMutation.mutate(eventData.profile);
   };
 
   const handleCloseSnackbar = () => {
