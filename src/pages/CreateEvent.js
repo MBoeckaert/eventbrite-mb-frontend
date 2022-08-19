@@ -102,7 +102,11 @@ const CreateEvent = () => {
     console.log(data.event.image);
     console.log(data.event.image.length);
     if (data.event.image.length > 0) {
-      formData.append("files.cover", data.event.image[0], data.image[0].name);
+      formData.append(
+        "files.cover",
+        data.event.image[0],
+        data.event.image[0].name
+      );
     }
     formData.append("data", JSON.stringify({ ...data, image: null }));
     // parseInt(data.price);
