@@ -105,7 +105,7 @@ const CreateEvent = () => {
     return await fetch(`${backendUrl}/api/events&populate=*`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
       body: JSON.stringify(data),
