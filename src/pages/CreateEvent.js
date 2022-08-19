@@ -43,6 +43,7 @@ const defaultValues = {
   name: "",
   location: "",
   price: "",
+  image: "",
   description: "",
 };
 
