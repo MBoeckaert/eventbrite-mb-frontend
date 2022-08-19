@@ -102,7 +102,7 @@ const CreateEvent = () => {
     // formData.append("data", JSON.stringify({ ...data, image: null }));
     console.log(data);
 
-    return await fetch(`${backendUrl}/api/events?populate=*`, {
+    return await fetch(`${backendUrl}/api/events&populate=*`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
