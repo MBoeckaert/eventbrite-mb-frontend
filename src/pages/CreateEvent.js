@@ -94,12 +94,12 @@ const CreateEvent = () => {
 
   const postEvent = async (data) => {
     //still need to add new FormData for uploading files
-    // const formData = new FormData();
+    const formData = new FormData();
 
-    // if (data.image.length > 0) {
-    //   formData.append("files.cover", data.image[0], data.image[0].name);
-    // }
-    // formData.append("data", JSON.stringify({ ...data, image: null }));
+    if (data.image.length > 0) {
+      formData.append("files.cover", data.image[0], data.image[0].name);
+    }
+    formData.append("data", JSON.stringify({ ...data, image: null }));
     parseInt(data.price);
     console.log(data);
 
@@ -109,7 +109,7 @@ const CreateEvent = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
-      body: JSON.stringify(data),
+      body: formData,
     }).then((r) => r.json());
     // .then((data) => {
     //   if (data.error) {
@@ -206,7 +206,7 @@ const CreateEvent = () => {
           <input hidden accept="image/*" type="file" />
         </Button> */}
 
-        {/* <Stack direction="row" spacing={2} alignItems="center">
+        <Stack direction="row" spacing={2} alignItems="center">
           <label htmlFor="contained-button-file">
             <Input
               accept="image/*"
@@ -227,7 +227,7 @@ const CreateEvent = () => {
               watch("image").length > 0 &&
               watch("image")[0].name}
           </Typography>
-        </Stack> */}
+        </Stack>
         <TextField
           id="description"
           label="Event Description"
