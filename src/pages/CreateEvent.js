@@ -198,7 +198,7 @@ const CreateEvent = () => {
           <input hidden accept="image/*" type="file" />
         </Button> */}
 
-        <Stack direction="row" spacing={2} alignItems="center">
+        {/* <Stack direction="row" spacing={2} alignItems="center">
           <label htmlFor="contained-button-file">
             <Input
               accept="image/*"
@@ -219,7 +219,7 @@ const CreateEvent = () => {
               watch("image").length > 0 &&
               watch("image")[0].name}
           </Typography>
-        </Stack>
+        </Stack> */}
         <TextField
           id="description"
           label="Event Description"
