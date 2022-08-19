@@ -129,7 +129,8 @@ const CreateEvent = () => {
     eventData.profile = profile.data[0].id;
     console.log(eventData.profile);
     console.log(eventData);
-    createMutation.mutate(eventData);
+    createMutation.mutate(eventData.profile.profile);
+    // createMutation.mutate(eventData);
     // createMutation.mutate(eventData.profile);
   };
 
