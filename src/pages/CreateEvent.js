@@ -42,7 +42,7 @@ const Input = styled("input")({
 const defaultValues = {
   name: "",
   location: "",
-  price: "",
+  price: null,
   description: "",
 };
 
@@ -188,7 +188,7 @@ const CreateEvent = () => {
           required
           error={!!errors?.name}
           helperText={errors?.name?.message}
-          {...register(parseInt("price"), {
+          {...register("price", {
             required: "Price is required",
           })}
         />
