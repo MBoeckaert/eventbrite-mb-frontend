@@ -42,7 +42,7 @@ const Input = styled("input")({
 const defaultValues = {
   name: "",
   location: "",
-  // price: null,
+  price: "",
   description: "",
 };
 
@@ -100,6 +100,7 @@ const CreateEvent = () => {
     //   formData.append("files.cover", data.image[0], data.image[0].name);
     // }
     // formData.append("data", JSON.stringify({ ...data, image: null }));
+    parseInt(data.price);
     console.log(data);
 
     return await fetch(`${backendUrl}/api/events`, {
@@ -189,7 +190,7 @@ const CreateEvent = () => {
             required: "Location is required",
           })}
         />
-        {/* <TextField
+        <TextField
           id="price"
           label="Price"
           required
@@ -198,7 +199,7 @@ const CreateEvent = () => {
           {...register("price", {
             required: "Price is required",
           })}
-        /> */}
+        />
         {/* <Typography>Upload Event Image</Typography>
         <Button variant="contained" component="label">
           Upload
