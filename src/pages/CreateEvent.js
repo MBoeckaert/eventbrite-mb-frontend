@@ -124,7 +124,7 @@ const CreateEvent = () => {
     onSuccess: (data) => {
       // const createdId = data.id;
       //data = null here...
-      console.log(`succes` + data);
+      console.log(`succes`, data);
       queryClient.invalidateQueries("events");
       reset();
     },
