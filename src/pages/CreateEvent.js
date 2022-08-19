@@ -97,10 +97,6 @@ const CreateEvent = () => {
   const postEvent = async (data) => {
     //still need to add new FormData for uploading files
     const formData = new FormData();
-    console.log(data);
-    console.log(data.event.length);
-    console.log(data.event.image);
-    console.log(data.event.image.length);
     if (data.event.image.length > 0) {
       formData.append(
         "files.cover",
@@ -126,9 +122,6 @@ const CreateEvent = () => {
     //   return data;
     // });
   };
-
-  // console.log(postEvent());
-  // console.log(postEvent);
 
   const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
@@ -170,7 +163,12 @@ const CreateEvent = () => {
         Create your Event!
       </Typography>
 
-      <Stack spacing={4} as="form" noValidate onSubmit={handleSubmit()}>
+      <Stack
+        spacing={4}
+        as="form"
+        noValidate
+        onSubmit={handleSubmit(handleSaveEvent)}
+      >
         <TextField
           id="name"
           label="Name"
@@ -268,9 +266,9 @@ const CreateEvent = () => {
             borderColor: "#f05537",
             color: "#ffffff",
           }}
-          onClick={() => {
-            handleSaveEvent();
-          }}
+          // onClick={() => {
+          //   handleSaveEvent();
+          // }}
         >
           Create Event
         </CreateButton>
