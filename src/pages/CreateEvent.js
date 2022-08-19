@@ -85,7 +85,7 @@ const CreateEvent = () => {
     handleSubmit,
     formState: { errors },
     register,
-    // reset,
+    reset,
     watch,
     getValues: getEventValues,
   } = useForm({ defaultValues });
@@ -105,7 +105,7 @@ const CreateEvent = () => {
     return await fetch(`${backendUrl}/api/events`, {
       method: "POST",
       headers: {
-        // "Content-Type": "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
       body: JSON.stringify(data),
@@ -123,6 +123,7 @@ const CreateEvent = () => {
       // const createdId = data.id;
       console.log(data);
       queryClient.invalidateQueries("events");
+      reset();
     },
     onError: (error) => {
       console.log(error);
