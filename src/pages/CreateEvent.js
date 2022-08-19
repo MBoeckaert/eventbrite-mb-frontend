@@ -96,12 +96,12 @@ const CreateEvent = () => {
 
   const postEvent = async (data) => {
     //still need to add new FormData for uploading files
-    const formData = new FormData();
-    if (data.image.length > 0) {
-      //tried a lot with data.event.image.length
-      formData.append("files.cover", data.image[0], data.image[0].name);
-    }
-    formData.append("data", JSON.stringify({ ...data, image: null }));
+    // const formData = new FormData();
+    // if (data.image.length > 0) {
+    //   //tried a lot with data.event.image.length
+    //   formData.append("files.cover", data.image[0], data.image[0].name);
+    // }
+    // formData.append("data", JSON.stringify({ ...data, image: null }));
     // parseInt(data.price);
 
     return await fetch(`${backendUrl}/api/events`, {
@@ -110,7 +110,7 @@ const CreateEvent = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
-      body: formData,
+      body: JSON.stringify(data), // formData,
     }).then((r) => r.json());
     // .then((data) => {
     //   if (data.error) {
@@ -123,6 +123,7 @@ const CreateEvent = () => {
   const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
       // const createdId = data.id;
+      //data = null here...
       console.log(`succes` + data);
       queryClient.invalidateQueries("events");
       reset();
