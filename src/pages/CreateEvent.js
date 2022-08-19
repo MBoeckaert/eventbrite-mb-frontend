@@ -99,6 +99,8 @@ const CreateEvent = () => {
     const formData = new FormData();
     console.log(data);
     console.log(data.event.length);
+    console.log(data.event.image);
+    console.log(data.event.image.length);
     if (data.image.length > 0) {
       formData.append("files.cover", data.image[0], data.image[0].name);
     }
