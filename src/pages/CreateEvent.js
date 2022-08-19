@@ -101,7 +101,7 @@ const CreateEvent = () => {
     // }
     // formData.append("data", JSON.stringify({ ...data, image: null }));
 
-    return await fetch(`${backendUrl}/api/events`, {
+    return await fetch(`${backendUrl}/api/events?populate=*`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +111,6 @@ const CreateEvent = () => {
     }).then((r) => r.json());
   };
 
-  console.log(postEvent);
   console.log(postEvent());
 
   const createMutation = useMutation(postEvent, {
