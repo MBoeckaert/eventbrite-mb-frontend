@@ -98,12 +98,8 @@ const CreateEvent = () => {
     //still need to add new FormData for uploading files
     const formData = new FormData();
     console.log(data);
-    if (data.event.image.length > 0) {
-      formData.append(
-        "files.cover",
-        data.event.image[0],
-        data.event.image[0].name
-      );
+    if (data.image.length > 0) {
+      formData.append("files.cover", data.image[0], data.image[0].name);
     }
     formData.append("data", JSON.stringify({ ...data, image: null }));
     // parseInt(data.price);
