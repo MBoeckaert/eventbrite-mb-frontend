@@ -42,7 +42,7 @@ const Input = styled("input")({
 const defaultValues = {
   name: "",
   location: "",
-  price: null,
+  // price: null,
   description: "",
 };
 
@@ -182,7 +182,7 @@ const CreateEvent = () => {
             required: "Location is required",
           })}
         />
-        <TextField
+        {/* <TextField
           id="price"
           label="Price"
           required
@@ -191,7 +191,7 @@ const CreateEvent = () => {
           {...register("price", {
             required: "Price is required",
           })}
-        />
+        /> */}
         {/* <Typography>Upload Event Image</Typography>
         <Button variant="contained" component="label">
           Upload
