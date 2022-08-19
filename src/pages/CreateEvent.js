@@ -109,14 +109,13 @@ const CreateEvent = () => {
         Authorization: `Bearer ${jwt}`,
       },
       body: JSON.stringify(data),
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.error) {
-          throw data.error;
-        }
-        return data;
-      });
+    }).then((r) => r.json());
+    // .then((data) => {
+    //   if (data.error) {
+    //     throw data.error;
+    //   }
+    //   return data;
+    // });
   };
 
   const createMutation = useMutation(postEvent, {
