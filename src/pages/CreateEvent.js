@@ -124,23 +124,13 @@ const CreateEvent = () => {
     },
   });
 
-  // const handleSaveEvent = async () => {
-  //   const eventData = getEventValues();
-  //   eventData.profile = profile.data[0].id;
-  //   console.log(eventData);
-  //   console.log(eventData.profile);
-  //   const extendedData = {
-  //     event: eventData, //remove data
-  //   };
-  //   createMutation.mutate(extendedData);
-  // };
-
   const handleSaveEvent = () => {
     const eventData = getEventValues();
     eventData.profile = profile.data[0].id;
     console.log(eventData.profile);
     console.log(eventData);
-    createMutation.mutate(eventData.profile);
+    createMutation.mutate(eventData);
+    // createMutation.mutate(eventData.profile);
   };
 
   const handleCloseSnackbar = () => {
