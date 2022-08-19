@@ -88,20 +88,19 @@ const CreateEvent = () => {
     register,
     reset,
     watch,
-    trigger: triggerSetForm,
     getValues: getEventValues,
   } = useForm({ defaultValues });
 
   const queryClient = useQueryClient();
 
   const postEvent = async (data) => {
-    const formData = new FormData();
-    if (data.image.length > 0) {
-      //tried a lot with data.event.image.length
-      formData.append("files.cover", data.image[0], data.image[0].name);
-    }
-    formData.append("data", JSON.stringify({ ...data, image: null }));
-    parseInt(data.price);
+    // const formData = new FormData();
+    // if (data.image.length > 0) {
+    //   //tried a lot with data.event.image.length
+    //   formData.append("files.cover", data.image[0], data.image[0].name);
+    // }
+    // formData.append("data", JSON.stringify({ ...data, image: null }));
+    // parseInt(data.price);
 
     return await fetch(`${backendUrl}/api/events`, {
       method: "POST",
@@ -109,7 +108,7 @@ const CreateEvent = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
-      body: { formData }, //JSON.stringify({ data }), // missing "data" payload in the request body ERROR
+      body: JSON.stringify({ data }), // missing "data" payload in the request body ERROR
     }).then((r) => r.json());
   };
 
@@ -125,18 +124,19 @@ const CreateEvent = () => {
     },
   });
 
-  const handleSaveEvent = async () => {
-    const outputEvent = await triggerSetForm();
-    if (outputEvent) {
-      const eventData = getEventValues();
-      eventData.profile = profile.data[0].id;
-      console.log(eventData);
-      console.log(eventData.profile);
-      const extendedData = {
-        event: eventData, //remove data
-      };
-      createMutation.mutate(extendedData);
-    }
+  // const handleSaveEvent = async () => {
+  //   const eventData = getEventValues();
+  //   eventData.profile = profile.data[0].id;
+  //   console.log(eventData);
+  //   console.log(eventData.profile);
+  //   const extendedData = {
+  //     event: eventData, //remove data
+  //   };
+  //   createMutation.mutate(extendedData);
+  // };
+
+  const handleSaveEvent = (data) => {
+    createMutation.mutate(data);
   };
 
   const handleCloseSnackbar = () => {
