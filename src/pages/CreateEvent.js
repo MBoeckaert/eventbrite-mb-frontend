@@ -188,7 +188,7 @@ const CreateEvent = () => {
           required
           error={!!errors?.name}
           helperText={errors?.name?.message}
-          {...register("price", {
+          {...register(parseInt("price"), {
             required: "Price is required",
           })}
         />
