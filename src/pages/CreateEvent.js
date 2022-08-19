@@ -92,7 +92,7 @@ const CreateEvent = () => {
 
   const queryClient = useQueryClient();
 
-  const postEvent = async (data, e) => {
+  const postEvent = async (data) => {
     //still need to add new FormData for uploading files
     // const formData = new FormData();
 
@@ -109,7 +109,14 @@ const CreateEvent = () => {
         Authorization: `Bearer ${jwt}`,
       },
       body: JSON.stringify(data),
-    }).then((r) => r.json());
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.error) {
+          throw data.error;
+        }
+        return data;
+      });
   };
 
   const createMutation = useMutation(postEvent, {
