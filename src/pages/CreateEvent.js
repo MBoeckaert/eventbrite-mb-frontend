@@ -88,6 +88,7 @@ const CreateEvent = () => {
     register,
     reset,
     watch,
+    trigger: triggerSetForm,
     getValues: getEventValues,
   } = useForm({ defaultValues });
 
@@ -96,13 +97,12 @@ const CreateEvent = () => {
   const postEvent = async (data) => {
     //still need to add new FormData for uploading files
     const formData = new FormData();
-
+    console.log(data);
     if (data.image.length > 0) {
       formData.append("files.cover", data.image[0], data.image[0].name);
     }
     formData.append("data", JSON.stringify({ ...data, image: null }));
     parseInt(data.price);
-    console.log(data);
 
     return await fetch(`${backendUrl}/api/events`, {
       method: "POST",
@@ -133,13 +133,17 @@ const CreateEvent = () => {
   });
 
   const handleSaveEvent = async () => {
-    const eventData = getEventValues();
-    eventData.profile = profile.data[0].id;
-    console.log(eventData.profile);
-    const extendedData = {
-      event: eventData, //remove data
-    };
-    createMutation.mutate(extendedData);
+    const outputEvent = await triggerSetForm();
+    if (outputEvent) {
+      const eventData = getEventValues();
+      eventData.profile = profile.data[0].id;
+      console.log(eventData);
+      console.log(eventData.profile);
+      const extendedData = {
+        event: eventData, //remove data
+      };
+      createMutation.mutate(extendedData);
+    }
   };
 
   const handleCloseSnackbar = () => {
