@@ -95,7 +95,6 @@ const CreateEvent = () => {
   const queryClient = useQueryClient();
 
   const postEvent = async (data) => {
-    //still need to add new FormData for uploading files
     // const formData = new FormData();
     // if (data.image.length > 0) {
     //   //tried a lot with data.event.image.length
@@ -110,20 +109,12 @@ const CreateEvent = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
-      body: JSON.stringify(data), // formData,
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.error) {
-          throw data.error;
-        }
-        return data;
-      });
+      body: JSON.stringify({ data }), // missing "data" payload in the request body ERROR
+    }).then((r) => r.json());
   };
 
   const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
-      // const createdId = data.id;
       //data = null here...
       console.log(`succes`, data);
       queryClient.invalidateQueries("events");
