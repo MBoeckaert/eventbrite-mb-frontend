@@ -112,8 +112,6 @@ const CreateEvent = () => {
     }).then((r) => r.json());
   };
 
-  console.log(postEvent(data));
-
   const createMutation = useMutation(postEvent, {
     onSuccess: (data) => {
       // const createdId = data.id;
