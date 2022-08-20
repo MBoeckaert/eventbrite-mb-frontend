@@ -32,7 +32,6 @@ const EventOverview = (props) => {
 
   return (
     <>
-      {console.log(`${backendUrl + props.picture} `)};{console.log(props)};
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
         <Grid container spacing={2}>
           <Grid item spacing={2} xs={8} container>

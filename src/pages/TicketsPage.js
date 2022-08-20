@@ -18,6 +18,8 @@ const Tickets = () => {
   //fetch profiles
   const jwt = useStore((state) => state.jwt);
   const username = useStore((state) => state.username);
+  const isLoggedIn = useStore((state) => state.isLoggedIn);
+  console.log(isLoggedIn);
   const qs = require("qs");
   const profileQuery = qs.stringify({
     filters: {

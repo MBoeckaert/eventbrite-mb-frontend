@@ -32,6 +32,7 @@ const Home = () => {
   // if (error) return <p>error sadFace</p>;
 
   console.log(`${backendUrl}/api/events`);
+  console.log(events);
 
   return (
     <>
