@@ -4,7 +4,7 @@ import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-// import { backendUrl } from "../lib/functions";
+import { backendUrl } from "../lib/functions";
 
 const theme = createTheme({
   components: {
@@ -32,6 +32,7 @@ const EventOverview = (props) => {
 
   return (
     <>
+      {console.log(`${backendUrl + props.picture} `)};{console.log(props)};
       <Card variant="outlined" sx={{ cursor: "pointer" }}>
         <Grid container spacing={2}>
           <Grid item spacing={2} xs={8} container>
