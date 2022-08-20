@@ -44,7 +44,7 @@ const EventOverview = (props) => {
                 {" "}
                 <Avatar
                   // need to get the img from imports!!!!
-                  src={`${backendUrl + props.image} `}
+                  // src={`${backendUrl + props.image} `}
                   alt="event pic"
                   sx={{ width: 252, height: 102 }}
                   variant="square"
