@@ -87,7 +87,10 @@ const Home = () => {
                     {/* <Link to={`/eventInfo/${event.id}`} underline="none"> */}
                     {console.log(event.id)}
                     <EventOverview
-                      image={event.attributes.image.data.attributes.url}
+                      image={
+                        event.data.attributes.image.data.attributes.formats
+                          .small.url
+                      }
                       id={event.id}
                       name={event.attributes.name}
                       date={event.attributes.date}
