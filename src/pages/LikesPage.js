@@ -1,9 +1,11 @@
 import { Grid } from "@mui/material/";
 // import { useQuery } from "react-query";
 import InlogButton from "../components/InlogButton";
+import { useStore } from "../store";
 // import EventOverview from "../components/EventOverview";
 
 const Likes = () => {
+  const isLoggedIn = useStore((state) => state.isLoggedIn);
   return (
     <>
       <Grid container>
@@ -12,7 +14,7 @@ const Likes = () => {
             <h1>Bekijk al je favorieten op één plek</h1>
           </Grid>
           <Grid item xs={12}>
-            <p>Log in om je favorieten te bekjken</p>
+            {isLoggedIn ? <p>Log in om je favorieten te bekjken</p> : ""}
           </Grid>
           <Grid item xs={12}>
             {/* Link to search page */}

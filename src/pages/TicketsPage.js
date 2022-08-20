@@ -64,10 +64,14 @@ const Tickets = () => {
             <h1>Op zoek naar je mobiele tickets?</h1>
           </Grid>
           <Grid item xs={12}>
-            <p>
-              Log in om met hetzelfde account waarmee je jouw tickets hebt
-              gekocht
-            </p>
+            {isLoggedIn ? (
+              <p>
+                Log in om met hetzelfde account waarmee je jouw tickets hebt
+                gekocht
+              </p>
+            ) : (
+              ""
+            )}
           </Grid>
         </Grid>
         <Grid item xs={12} sx={{ height: "63vh" }}></Grid>
