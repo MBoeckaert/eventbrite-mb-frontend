@@ -56,9 +56,9 @@ const EventOverview = (props) => {
   };
 
   console.log(props);
-  const frontEndUrl = encodeURIComponent(
-    `https://eventbrite-mb.herokuapp.com/eventInfo/${props.id}`
-  );
+  // const frontEndUrl = encodeURIComponent(
+  //   `https://eventbrite-mb.herokuapp.com/eventInfo/${props.id}`
+  // );
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -142,16 +142,27 @@ const EventOverview = (props) => {
                     Share this Event
                   </Typography>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <EmailShareButton url={`${frontEndUrl}`} sx={{ mr: 2 }}>
+                    <EmailShareButton
+                      url={`https://eventbrite-mb.herokuapp.com/eventInfo/${props.id}`}
+                      sx={{ mr: 2 }}
+                    >
                       <EmailIcon />
                     </EmailShareButton>
-                    <FacebookShareButton url={`${frontEndUrl}`} sx={{ mr: 2 }}>
+                    <FacebookShareButton
+                      url={`https://eventbrite-mb.herokuapp.com/eventInfo/${props.id}`}
+                      sx={{ mr: 2 }}
+                    >
                       <FacebookIcon />
                     </FacebookShareButton>
-                    <TwitterShareButton url={`${frontEndUrl}`} sx={{ mr: 2 }}>
+                    <TwitterShareButton
+                      url={`https://eventbrite-mb.herokuapp.com/eventInfo/${props.id}`}
+                      sx={{ mr: 2 }}
+                    >
                       <TwitterIcon />
                     </TwitterShareButton>
-                    <WhatsappShareButton url={`${frontEndUrl}`}>
+                    <WhatsappShareButton
+                      url={`https://eventbrite-mb.herokuapp.com/eventInfo/${props.id}`}
+                    >
                       <WhatsappIcon />
                     </WhatsappShareButton>
                   </Typography>
