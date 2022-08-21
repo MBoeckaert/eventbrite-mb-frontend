@@ -14,7 +14,7 @@ const Likes = () => {
             <h1>Bekijk al je favorieten op één plek</h1>
           </Grid>
           <Grid item xs={12}>
-            {isLoggedIn ? <p>Log in om je favorieten te bekjken</p> : ""}
+            {isLoggedIn ? "" : <p>Log in om je favorieten te bekjken</p>}
           </Grid>
           <Grid item xs={12}>
             {/* Link to search page */}

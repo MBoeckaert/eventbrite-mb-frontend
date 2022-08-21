@@ -19,7 +19,6 @@ const Tickets = () => {
   const jwt = useStore((state) => state.jwt);
   const username = useStore((state) => state.username);
   const isLoggedIn = useStore((state) => state.isLoggedIn);
-  console.log(isLoggedIn);
   const qs = require("qs");
   const profileQuery = qs.stringify({
     filters: {
@@ -65,12 +64,12 @@ const Tickets = () => {
           </Grid>
           <Grid item xs={12}>
             {isLoggedIn ? (
+              ""
+            ) : (
               <p>
                 Log in om met hetzelfde account waarmee je jouw tickets hebt
                 gekocht
               </p>
-            ) : (
-              ""
             )}
           </Grid>
         </Grid>
