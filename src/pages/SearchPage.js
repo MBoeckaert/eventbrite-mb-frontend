@@ -49,7 +49,6 @@ const Search = () => {
         >
           {events.data.length} evenementen
         </Typography>
-        {/* <Stack spacing={4}>{overviewEventsAvailable}</Stack> */}
         <Stack spacing={4}>
           {eventsAreLoading && <LoadingInfo />}
           {eventsLoadingError && (
@@ -85,15 +84,17 @@ const Search = () => {
                   <EventOverview
                     key={event.id}
                     id={event.id}
-                    // picture={event.attributes.picture.data.attributes.url}
+                    imageUrl={
+                      event.attributes && event.attributes.image.data
+                        ? backendUrl +
+                          event.attributes.image.data.attributes.url
+                        : ""
+                    }
                     name={event.attributes.name}
                     date={event.attributes.date}
                     location={event.attributes.location}
                   />
                 </Link>
-                // <div key={event.id} className="box">
-                //   <p className="nameEvent">{event.attributes.name}</p>
-                // </div>
               ))}
         </Stack>
       </Container>
