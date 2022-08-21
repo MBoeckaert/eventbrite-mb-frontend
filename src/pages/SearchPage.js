@@ -84,12 +84,7 @@ const Search = () => {
                   <EventOverview
                     key={event.id}
                     id={event.id}
-                    imageUrl={
-                      event.attributes && event.attributes.image.data
-                        ? backendUrl +
-                          event.attributes.image.data.attributes.url
-                        : ""
-                    }
+                    // imageUrl={event.attributes.picture.data.attributes.url}
                     name={event.attributes.name}
                     date={event.attributes.date}
                     location={event.attributes.location}

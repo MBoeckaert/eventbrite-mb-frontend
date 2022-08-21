@@ -62,19 +62,9 @@ export default function SignIn() {
     return data;
   });
 
-  //fetch profiles
-  // const data = fetch(
-  //   `${backendUrl}/api/profiles?${profileQuery}?populate=*`
-  // ).then((res) => res.json());
-  // console.log(data);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get("email"),
-    //   password: data.get("password"),
-    // });
   };
 
   return (

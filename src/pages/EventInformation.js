@@ -13,6 +13,7 @@ import {
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
+// import TicketsButton from "../components/TicketsButton.js";
 import { styled } from "@mui/material/styles";
 import { Button } from "@mui/material";
 import { useParams } from "react-router-dom";
@@ -62,8 +63,10 @@ const ClickedEventInformation = (props) => {
       ) : (
         <CardMedia
           component="img"
-          alt={events.attributes.image.data.attributes.alternativeText}
-          src={`${backendUrl + events.attributes.image.data.attributes.url}`}
+          alt={events.data.attributes.picture.data.attributes.alternativeText}
+          src={`${
+            backendUrl + events.data.attributes.picture.data.attributes.url
+          }`}
         />
       )}
 
