@@ -109,7 +109,7 @@ const CreateEvent = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
-      body: JSON.stringify(data), // missing "data" payload in the request body ERROR
+      body: { data: JSON.stringify(data) }, // missing "data" payload in the request body ERROR
     }).then((r) => r.json());
   };
 
