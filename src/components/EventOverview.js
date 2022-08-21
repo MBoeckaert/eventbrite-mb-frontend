@@ -12,6 +12,13 @@ import {
   WhatsappShareButton,
 } from "react-share";
 
+import {
+  EmailIcon,
+  FacebookIcon,
+  WhatsappIcon,
+  TwitterIcon,
+} from "react-share";
+
 const theme = createTheme({
   components: {
     MuiTypography: {
@@ -132,9 +139,18 @@ const EventOverview = (props) => {
                     Share this Event
                   </Typography>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <EmailShareButton /> <FacebookShareButton />
-                    <TwitterShareButton />
-                    <WhatsappShareButton />
+                    <EmailShareButton url="https://eventbrite-mb.herokuapp.com/eventInfo/{props.id}">
+                      <EmailIcon />
+                    </EmailShareButton>
+                    <FacebookShareButton>
+                      <FacebookIcon />
+                    </FacebookShareButton>
+                    <TwitterShareButton>
+                      <TwitterIcon />
+                    </TwitterShareButton>
+                    <WhatsappShareButton>
+                      <WhatsappIcon />
+                    </WhatsappShareButton>
                   </Typography>
                 </Box>
               </Modal>
