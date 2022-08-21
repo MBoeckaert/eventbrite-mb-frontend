@@ -26,11 +26,7 @@ const ButtonLogIn = (props) => {
       {isLoggedIn ? (
         ""
       ) : (
-        <LoginButton
-          variant="contained"
-          // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
-          onClick={() => navigate("/signUp")}
-        >
+        <LoginButton variant="contained" onClick={() => navigate("/signUp")}>
           Inloggen
         </LoginButton>
       )}

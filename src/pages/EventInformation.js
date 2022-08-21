@@ -8,6 +8,7 @@ import {
   MenuItem,
   FormControl,
   Select,
+  CardMedia,
 } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -57,7 +58,7 @@ const ClickedEventInformation = (props) => {
 
   return (
     <>
-      {/* {isLoadingEventInfo ? (
+      {isLoadingEventInfo ? (
         <Skeleton />
       ) : (
         <CardMedia
@@ -67,7 +68,7 @@ const ClickedEventInformation = (props) => {
             backendUrl + events.data.attributes.picture.data.attributes.url
           }`}
         />
-      )} */}
+      )}
 
       <Container>
         <Typography

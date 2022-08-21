@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-// import { ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const TicketsButton = styled(Button)({
@@ -21,17 +20,14 @@ const ButtonTickets = (props) => {
   const navigate = useNavigate();
   return (
     <>
-      {/* <ThemeProvider> */}
       <TicketsButton
         variant="contained"
-        // sx={{ backgroundColor: "#f05537", width: "100%", cursor: "pointer" }}
         onClick={() => navigate("/orderTickets")}
         eventName={props.name}
         eventPrice={props.price}
       >
         Tickets
       </TicketsButton>
-      {/* </ThemeProvider> */}
     </>
   );
 };

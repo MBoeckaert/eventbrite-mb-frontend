@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-// import { ThemeProvider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../store";
 
