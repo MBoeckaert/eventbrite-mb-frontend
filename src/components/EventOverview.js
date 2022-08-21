@@ -4,7 +4,7 @@ import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-// import { backendUrl } from "../lib/functions";
+import { backendUrl } from "../lib/functions";
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -78,7 +78,7 @@ const EventOverview = (props) => {
                 {" "}
                 <Avatar
                   // need to get the img from imports!!!!
-                  // src={`${backendUrl + props.image} `}
+                  src={`${backendUrl} + ${props.imageUrl}`}
                   alt="event pic"
                   sx={{ width: 252, height: 102 }}
                   variant="square"
