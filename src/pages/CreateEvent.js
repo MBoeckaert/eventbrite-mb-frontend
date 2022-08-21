@@ -15,11 +15,8 @@ import { backendUrl } from "../lib/functions";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { useStore } from "../store";
-// import { useNavigate } from "react-router-dom";
-// import LoadingInfo from "../components/LoadingInfo";
 
 import { styled } from "@mui/material/styles";
-// import { useState } from "react";
 
 const CreateButton = styled(Button)({
   width: "100%",
@@ -48,7 +45,6 @@ const defaultValues = {
 };
 
 const CreateEvent = () => {
-  // const navigate = useNavigate();
   const [value, setValue] = React.useState(new Date("2022-01-01T12:00:00"));
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -66,11 +62,7 @@ const CreateEvent = () => {
     },
   });
 
-  const {
-    // isLoading: profileLoading,
-    // error: profileError,
-    data: profile,
-  } = useQuery(["profile"], async () => {
+  const { data: profile } = useQuery(["profile"], async () => {
     const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
       method: "GET",
       headers: {
@@ -80,7 +72,6 @@ const CreateEvent = () => {
     }).then((r) => r.json());
     return data;
   });
-  // console.log(profile);
 
   const {
     handleSubmit,
@@ -100,7 +91,6 @@ const CreateEvent = () => {
     //   formData.append("files.cover", data.image[0], data.image[0].name);
     // }
     // formData.append("data", JSON.stringify({ ...data, image: null }));
-    // parseInt(data.price);
 
     console.log(data);
     return await fetch(`${backendUrl}/api/events`, {
@@ -109,7 +99,7 @@ const CreateEvent = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
-      body: JSON.stringify({ data: data }), // missing "data" payload in the request body ERROR
+      body: JSON.stringify({ data: data }), // error: 500 (internal server error)
     }).then((r) => r.json());
   };
 
@@ -128,10 +118,8 @@ const CreateEvent = () => {
   const handleSaveEvent = () => {
     const eventData = getEventValues();
     eventData.profile = profile.data[0].id;
-    console.log(eventData.profile);
     console.log(eventData);
     createMutation.mutate(eventData);
-    // createMutation.mutate(eventData.profile);
   };
 
   const handleCloseSnackbar = () => {
@@ -198,11 +186,6 @@ const CreateEvent = () => {
             required: "Price is required",
           })}
         />
-        {/* <Typography>Upload Event Image</Typography>
-        <Button variant="contained" component="label">
-          Upload
-          <input hidden accept="image/*" type="file" />
-        </Button> */}
 
         <Stack direction="row" spacing={2} alignItems="center">
           <label htmlFor="contained-button-file">
@@ -243,17 +226,12 @@ const CreateEvent = () => {
           loadingIndicator="Adding event"
           type="submit"
           color="inherit"
-          // component="a"
-          // href={`${backendUrl}/api/connect/google`}
           sx={{
             mt: 3,
             mb: 2,
             borderColor: "#f05537",
             color: "#ffffff",
           }}
-          // onClick={() => {
-          //   handleSaveEvent();
-          // }}
         >
           Create Event
         </CreateButton>
