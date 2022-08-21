@@ -142,13 +142,13 @@ const EventOverview = (props) => {
                     Share this Event
                   </Typography>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <EmailShareButton url={`${frontEndUrl}`}>
+                    <EmailShareButton url={`${frontEndUrl}`} sx={{ mr: 2 }}>
                       <EmailIcon />
                     </EmailShareButton>
-                    <FacebookShareButton>
+                    <FacebookShareButton sx={{ mr: 2 }}>
                       <FacebookIcon />
                     </FacebookShareButton>
-                    <TwitterShareButton>
+                    <TwitterShareButton sx={{ mr: 2 }}>
                       <TwitterIcon />
                     </TwitterShareButton>
                     <WhatsappShareButton>
