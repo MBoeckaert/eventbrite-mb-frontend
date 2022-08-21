@@ -4,7 +4,6 @@ import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { backendUrl } from "../lib/functions";
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -49,16 +48,10 @@ const style = {
 };
 
 const EventOverview = (props) => {
-  //test click button
   const [clickedButton, setClickedButton] = useState(true);
   const handleClick = () => {
     setClickedButton((current) => !current);
   };
-
-  console.log(props);
-  // const frontEndUrl = encodeURIComponent(
-  //   `https://eventbrite-mb.herokuapp.com/eventInfo/${props.id}`
-  // );
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -77,7 +70,6 @@ const EventOverview = (props) => {
               >
                 {" "}
                 <Avatar
-                  // need to get the img from imports!!!!
                   src={`${props.imageUrl}`}
                   alt="event pic"
                   sx={{ width: 252, height: 102 }}
@@ -111,7 +103,6 @@ const EventOverview = (props) => {
                       {props.location}
                     </Typography>
                   </Grid>
-                  {/* end Link here */}
                 </ThemeProvider>
               </Link>
             </Grid>
@@ -182,7 +173,6 @@ const EventOverview = (props) => {
           >
             <Typography variant="body3" component="span">
               {clickedButton ? <FavoriteBorderIcon /> : <FavoriteIcon />}
-              {console.log(handleClick)}
             </Typography>
           </Grid>
         </Grid>

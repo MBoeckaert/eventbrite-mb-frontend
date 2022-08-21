@@ -1,7 +1,5 @@
 import { Grid } from "@mui/material/";
-// import LoadingInfo from "../components/LoadingInfo";
 import { backendUrl } from "../lib/functions";
-// import { useQuery } from "react-query";
 import InlogButton from "../components/InlogButton";
 import EventButton from "../components/EventButton";
 
@@ -28,11 +26,7 @@ const Tickets = () => {
     },
   });
 
-  const {
-    isLoading: profileLoading,
-    error: profileError,
-    data: profile,
-  } = useQuery(["profile"], async () => {
+  const { data: profile } = useQuery(["profile"], async () => {
     const data = await fetch(`${backendUrl}/api/profiles?${profileQuery}`, {
       method: "GET",
       headers: {
@@ -44,16 +38,6 @@ const Tickets = () => {
   });
 
   console.log(profile);
-  // const {
-  //   isLoading: setLoading,
-  //   error: setError,
-  //   data: set,
-  // } = useQuery(["set", setId], async () => {
-  //   const data = await fetch(
-  //     `${backendUrl}/api/sets/${setId}?populate=*&_limit=-1`
-  //   ).then((r) => r.json());
-  //   return data.data.attributes;
-  // });
 
   return (
     <>
@@ -79,7 +63,6 @@ const Tickets = () => {
             <InlogButton />
           </Grid>
           <Grid item xs={12}>
-            {/* <Button>Evenementen</Button> */}
             <EventButton />
           </Grid>
         </Grid>

@@ -8,8 +8,6 @@ import { useStore } from "../store";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
-// import useFetch from "../hooks/useFetch";
-
 const Home = () => {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
   const username = useStore((state) => state.username);
@@ -37,10 +35,8 @@ const Home = () => {
           Eventbrite
         </Typography>
         {isLoggedIn ? <h2>Welcome {username}</h2> : ""}
-        {/* can use a filter or work with geolocation API */}
         <h3>Opkomende evenementen</h3>
 
-        {/* Popular in Oost-Vl niet doen */}
         <Stack spacing={4}>
           {eventsAreLoading && <LoadingInfo />}
           {eventsLoadingError && (
@@ -51,13 +47,11 @@ const Home = () => {
               height: "65vh",
               perPage: 5,
               pagination: false,
-              // arrows: false,
               direction: "ttb",
               wheel: true,
               releaseWheel: true,
               waitForTransition: true,
               wheelSleep: 5,
-              // padding: { left: 10, right: 20 },
             }}
           >
             {events &&
@@ -88,7 +82,6 @@ const Home = () => {
                       date={event.attributes.date}
                       location={event.attributes.location}
                     />
-                    {/* </Link> */}
                   </SplideSlide>
                 ))}
           </Splide>

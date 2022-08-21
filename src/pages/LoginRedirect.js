@@ -15,8 +15,6 @@ const linkUserToProfile = async (data) => {
     body: JSON.stringify(data),
   }).then((r) => r.json());
 };
-//logged in user is in here
-// console.log(linkUserToProfile);
 
 const checkProfileData = async (dataUser) => {
   const qs = require("qs");
