@@ -145,13 +145,13 @@ const EventOverview = (props) => {
                     <EmailShareButton url={`${frontEndUrl}`} sx={{ mr: 2 }}>
                       <EmailIcon />
                     </EmailShareButton>
-                    <FacebookShareButton sx={{ mr: 2 }}>
+                    <FacebookShareButton url={`${frontEndUrl}`} sx={{ mr: 2 }}>
                       <FacebookIcon />
                     </FacebookShareButton>
-                    <TwitterShareButton sx={{ mr: 2 }}>
+                    <TwitterShareButton url={`${frontEndUrl}`} sx={{ mr: 2 }}>
                       <TwitterIcon />
                     </TwitterShareButton>
-                    <WhatsappShareButton>
+                    <WhatsappShareButton url={`${frontEndUrl}`}>
                       <WhatsappIcon />
                     </WhatsappShareButton>
                   </Typography>
