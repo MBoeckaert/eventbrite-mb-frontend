@@ -5,6 +5,12 @@ import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { backendUrl } from "../lib/functions";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
 
 const theme = createTheme({
   components: {
@@ -41,6 +47,8 @@ const EventOverview = (props) => {
   const handleClick = () => {
     setClickedButton((current) => !current);
   };
+
+  console.log(props);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -121,11 +129,12 @@ const EventOverview = (props) => {
                     variant="h6"
                     component="h2"
                   >
-                    Text in a modal
+                    Share this Event
                   </Typography>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duis mollis, est non commodo luctus, nisi erat porttitor
-                    ligula.
+                    <EmailShareButton /> <FacebookShareButton />
+                    <TwitterShareButton />
+                    <WhatsappShareButton />
                   </Typography>
                 </Box>
               </Modal>
