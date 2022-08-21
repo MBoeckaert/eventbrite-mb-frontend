@@ -85,7 +85,7 @@ const Home = () => {
                 .map((event) => (
                   <SplideSlide key={event.id}>
                     {/* <Link to={`/eventInfo/${event.id}`} underline="none"> */}
-                    {console.log(event.id)}
+                    {console.log(event)}
                     <EventOverview
                       imageUrl={event.attributes.image.data.attributes.url}
                       id={event.id}
