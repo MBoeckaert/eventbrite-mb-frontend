@@ -88,7 +88,7 @@ const Home = () => {
                     {console.log(event)}
                     <EventOverview
                       imageUrl={
-                        event.attributes.image.data
+                        event.attributes && event.attributes.image.data
                           ? backendUrl +
                             event.attributes.image.data.attributes.url
                           : ""
