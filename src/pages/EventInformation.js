@@ -58,7 +58,7 @@ const ClickedEventInformation = (props) => {
 
   return (
     <>
-      {isLoadingEventInfo ? (
+      {/* {isLoadingEventInfo ? (
         <Skeleton />
       ) : (
         <CardMedia
@@ -68,7 +68,7 @@ const ClickedEventInformation = (props) => {
             backendUrl + events.data.attributes.picture.data.attributes.url
           }`}
         />
-      )}
+      )} */}
 
       <Container>
         <Typography
