@@ -26,14 +26,6 @@ const Home = () => {
     return data;
   });
 
-  // const { loading, error, data } = useFetch(`http://localhost:1337/events`);
-
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>error sadFace</p>;
-
-  console.log(`${backendUrl}/api/events`);
-  console.log(events);
-
   return (
     <>
       <Container
@@ -84,8 +76,6 @@ const Home = () => {
                 })
                 .map((event) => (
                   <SplideSlide key={event.id}>
-                    {/* <Link to={`/eventInfo/${event.id}`} underline="none"> */}
-                    {console.log(event)}
                     <EventOverview
                       imageUrl={
                         event.attributes && event.attributes.image.data
