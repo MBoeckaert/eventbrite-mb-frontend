@@ -102,13 +102,14 @@ const CreateEvent = () => {
     // formData.append("data", JSON.stringify({ ...data, image: null }));
     // parseInt(data.price);
 
+    console.log(data);
     return await fetch(`${backendUrl}/api/events`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
       },
-      body: JSON.stringify({ data }), // missing "data" payload in the request body ERROR
+      body: JSON.stringify(data), // missing "data" payload in the request body ERROR
     }).then((r) => r.json());
   };
 
