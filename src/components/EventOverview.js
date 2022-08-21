@@ -4,7 +4,7 @@ import { useState } from "react";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { backendUrl } from "../lib/functions";
+// import { backendUrl } from "../lib/functions";
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -56,6 +56,9 @@ const EventOverview = (props) => {
   };
 
   console.log(props);
+  const frontEndUrl = encodeURIComponent(
+    `https://eventbrite-mb.herokuapp.com/eventInfo/${props.id}`
+  );
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -139,7 +142,7 @@ const EventOverview = (props) => {
                     Share this Event
                   </Typography>
                   <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    <EmailShareButton url="https://eventbrite-mb.herokuapp.com/eventInfo/{props.id}">
+                    <EmailShareButton url={`${frontEndUrl}`}>
                       <EmailIcon />
                     </EmailShareButton>
                     <FacebookShareButton>
